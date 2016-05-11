@@ -4,11 +4,11 @@ Here you'll learn how you can use FIT to increase both the real and the perceive
 
 If you haven't integrated your own website, you can follow through on our test website, which is shown below, on wide (desktop), and narrow (mobile) viewports:
 
-![FIT demo site](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-demo-site.jpg "FIT demo site, viwed on large and small viewports")
+<img src="https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-demo-site.jpg" width="100%" style="max-width:1000px">
 
 ## Image Optimization
 
-Images usually account for the major part of the page size. Image optimization therefore can often yield significant payload savings which drastically improves the performance: Fewer bytes have to be transferred and the rendering is faster. Moreover, sending large, unoptimized images to mobile devices can even impact battery life too.
+Images are genereally the largest contributor to page weight. Image optimization therefore can often yield significant payload savings which drastically improves the performance: Fewer bytes have to be transferred and the rendering is faster. Moreover, sending large, unoptimized images to mobile devices can even impact battery life too.
 
 In FIT, there are two sides to image optimization: image scaling, and image compression. Since FIT version 14.3.1 it is possible to configure image scaling and compression separately.
 
