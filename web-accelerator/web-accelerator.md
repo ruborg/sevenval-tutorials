@@ -2,7 +2,7 @@
 
 Here you'll learn how you can use FIT to increase both the real and the perceived performance of your website. At this point we assume that you already have [integrated your website, or our test site, with FIT as outlined before](https://developer.sevenval.com/start/tutorials/integration.html).
 
-If you haven't intergrated your own website, you can follow through on our test website, which is shown below, on wide (desktop), and narrow (mobile) viewports:
+If you haven't integrated your own website, you can follow through on our test website, which is shown below, on wide (desktop), and narrow (mobile) viewports:
 
 ![FIT demo site](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-demo-site.jpg "FIT demo site, viwed on large and small viewports")
 
