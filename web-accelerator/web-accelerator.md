@@ -35,8 +35,6 @@ A full list of image scaling parameters can be found [on the image scaling docum
 
 ### Image compression
 
-## Image compression
-
 As well as scaling images, Web Accelerator also provides separate options for image compression. Global image compression can be enabled in your application using the `image-compression` element in your `config.xml` file:
 
 ```xml
@@ -47,7 +45,7 @@ As well as scaling images, Web Accelerator also provides separate options for im
 </config>
 ```
 
-### Quality
+#### Quality
 
 The optional `quality` parameter allows you to set the global compression level. The default compression value is 70. A value of -1 indicates lossless compression for PNG images, and maximum quality for JPEGs.
 
@@ -65,7 +63,7 @@ Notice too that the site will score better now in external tools such as Google'
 > Note that the `quality` value specifed here will override any value specified in the `image scaling` configuration.
 
 
-### Image formats
+#### Image formats
 
 FIT Web Accelerator supports many different image formats, and it will convert your images to the best supported format for any device or browser. The formats supported by FIT include JPEG, WebP, GIF, SVG... https://developer.sevenval.com/docs/current/ress/Image_Scaling.html#image-formats
 
@@ -76,7 +74,7 @@ We can see this in action below, where a Chrome client receives WebP images, whi
 IMAGE BEFORE/AFTER
 
 
-### JPEG Chroma Subsampling
+#### JPEG Chroma Subsampling
 
 Chroma subsampling is a feature of JPEG image compression based on the fact that humans are better at detecting variations in luminance (lighting) than in colour. Thus, colour information in images can be compressed without causing any detectable degradation in image quality.
 
@@ -85,14 +83,14 @@ Web Accelerator automatically peforms chroma subsampling on JPEG images to produ
 IMAGE BEFORE/AFTER
 
 
-### PNG Quantization
+#### PNG Quantization
 
 Web Accelerator also reduces 24-bit trucolor PNG images to 8-bit PNG images. We can see the effect of this below, reducing the file size by XXX
 
 IMAGE BEFORE/AFTER
 
 
-## Image Compression Parameters
+#### Image Compression Parameters
 
 Image compression can also be controlled more precisely on a per-image basis using the `ai-compress` attribute:
 
