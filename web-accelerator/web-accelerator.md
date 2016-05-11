@@ -4,13 +4,13 @@ Here you'll learn how you can use FIT to increase both the real and the perceive
 
 If you haven't intergrated your own website, you can follow through on our test website, which is shown below, on wide (desktop), and narrow (mobile) viewports:
 
-IMAGES
+![]()
 
 ## Image Optimization
 
 Images usually account for the major part of the page size. Image optimization therefore can often yield significant payload savings which drastically improves the performance: Fewer bytes have to be transferred and the rendering is faster. Moreover, sending large, unoptimized images to mobile devices can even impact battery life too.
 
-In FIT, there are two sides to image optimization: image scaling, and image compression. Since FIT version 4.4.4 it is possible to configure image scaling and compression separately.
+In FIT, there are two sides to image optimization: image scaling, and image compression. Since FIT version 14.3.1 it is possible to configure image scaling and compression separately.
 
 ### Image scaling
 
