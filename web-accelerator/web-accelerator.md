@@ -68,7 +68,13 @@ The WebP format is [on average between 25%-34% smaller for the same JPEG image](
 
 We can see this in action below, where a Chrome client receives WebP images, while Firefox receives JPEGs since WebP is not supported. Web Accelerator knows which image format is the best for which browser, and will make this decision automatically for you, so that your visitors will always recieve the optimal image format for their browser.
 
-IMAGE FF/Chrome dev tools
+Firefox developer tools network panel:
+
+![Firefox dev tools network panel](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/firefox-dev-tools-network.jpg "Network panel of Firefox dev tools showing JPEG images")
+
+Chrome developer tools network panel:
+
+![Chrome dev tools network panel](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/chrome-dev-tools-network.jpg "Network panel of Chrome dev tools showing WebP images")
 
 
 #### JPEG Chroma Subsampling
@@ -91,9 +97,7 @@ $ identify -format "%[jpeg:sampling-factor]" bg.jpg
 
 #### PNG Quantization
 
-Web Accelerator also reduces 24-bit truecolor PNG images to 8-bit PNG images. We can see the effect of this below, reducing the file size by XXX
-
-IMAGE BEFORE/AFTER
+Web Accelerator also reduces 24-bit truecolor PNG images to 8-bit PNG images.
 
 
 #### Image Compression Parameters
