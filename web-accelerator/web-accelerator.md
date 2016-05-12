@@ -27,9 +27,9 @@ To provide browsers with optimal content, you should also enable the [JavaScript
 </config>
 ```
 
-Using Chrome dev tools, we can immediately see the effect this has when we reload our optimized web page (`http://local14.sevenval-fit.com`). Note that in the original page, the background image is a 1274x1274 pixel JPEG. When we use a smaller viewport, the image is scaled down to 480x480 pixels, and it now uses the more efficient WebP format. The background image size has been reduced from 605KB to just 20.1KB!
+Using Chrome dev tools, we can immediately see the effect this has when we reload our optimized web page (`http://local14.sevenval-fit.com`). Note that in the original page, the background image is a 1274x1274 pixel JPEG. When we use a smaller viewport, the image is scaled down to 480x480 pixels, and (in Chrome) it now uses the more efficient WebP format. The background image size has been reduced from 605KB to just 20.1KB!
 
-IMAGES
+![FIT image scaling](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-image-scaling.jpg "FIT image scaling")
 
 A full list of image scaling parameters can be found [on the image scaling documentation page](https://developer.sevenval.com/docs/current/ress/Image_Scaling.html).
 
