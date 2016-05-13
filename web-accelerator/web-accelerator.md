@@ -49,13 +49,18 @@ As well as scaling images, Web Accelerator also provides separate options for im
 
 The optional `quality` parameter allows you to set the global compression level. The default compression value is 70. A value of -1 indicates lossless compression for PNG images, and maximum quality for JPEGs.
 
+> Note that the `quality` value specifed here will override any value specified in the `image scaling` configuration.
+
 If we reload our optimized site with the config above, we can see there is little *discernible* change to the images, but the file size difference is significant: the background image size has been reduced from 605KB to 123KB, and using `webpagetest.org` to analyze the page, we can see the total size for all images has been reduced from 892KB to 239KB.
 
 ![Chart of total images size before](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/images-size-before.png "Total size for all images before optimization") ![Chart of total images size after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/images-size-after.png "Total size for all images after optimization")
 
 We can push these savings further using a lower quality value. The image below shows the image with quality 10. The file size has been reduced to 34.8KB, but compression artifacts are now visible in image when displayed at full size. File size will obviously vary with quality: a lower quality value results in lower file size, so there is a tradeoff here. The default of 70 is often a good option!
 
-> Note that the `quality` value specifed here will override any value specified in the `image scaling` configuration.
+
+![Highly compressed image](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/compressed-image.jpg "Compression quality of 10 results in visible artifacts in displayed at full resolution")
+
+
 
 Notice too that the site will score better now in external tools such as Google's PageSpeed Insights which has noticed the optimized images. With this one configuration change, the score for our demo site goes from 77 to 83 (inset), and PageSpeed Insights can find little to complain about in our optimized images:
 
