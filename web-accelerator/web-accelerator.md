@@ -55,14 +55,17 @@ If we reload our optimized site with the config above, we can see there is littl
 
 We can push these savings further using a lower quality value. The image below shows the image with quality 10. The file size has been reduced to 34.8KB, but compression artifacts are now visible in image when displayed at full size. File size will obviously vary with quality: a lower quality value results in lower file size, so there is a tradeoff here. The default of 70 is often a good option!
 
-Notice too that the site will score better now in external tools such as Google's PageSpeed Insights which has noticed the optimized images.
-
 > Note that the `quality` value specifed here will override any value specified in the `image scaling` configuration.
+
+Notice too that the site will score better now in external tools such as Google's PageSpeed Insights which has noticed the optimized images. With this one configuration change, the score for our demo site goes from 77 to 83 (inset), and PageSpeed Insights can find little to complain about in our optimized images:
+
+![PageSpeed Insights before and after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/pagespeedinsights-before-after.jpg "PageSpeed Insights score goes from 77 to 83 with image compression")
+
 
 
 #### Image formats
 
-FIT Web Accelerator supports many different image formats, and it will convert your images to the best supported format for any device or browser. The formats supported by FIT include JPEG, WebP, GIF, SVG... https://developer.sevenval.com/docs/current/ress/Image_Scaling.html#image-formats
+FIT Web Accelerator supports many different image formats, and it will convert your images to the best supported format for any device or browser. The formats supported by FIT include JPEG, PNG, WebP, GIF, SVG. Read more about supported formats in the [FIT image format documentation](https://developer.sevenval.com/docs/current/ress/Image_Scaling.html#image-formats).
 
 The WebP format is [on average between 25%-34% smaller for the same JPEG image](https://developers.google.com/speed/webp/docs/webp_study#experiment_2_ssim_vs_bpp_plots_for_webp_and_jpeg). Therefore it is preferred where it is supported.
 
@@ -81,7 +84,7 @@ Chrome developer tools network panel:
 
 Chroma subsampling is a feature of JPEG image compression based on the fact that humans are better at detecting variations in luminance (lighting) than in colour. Thus, colour information in images can be compressed without causing any detectable degradation in image quality.
 
-Web Accelerator automatically peforms chroma subsampling on JPEG images to produce smaller image sizes. Using Imagemagick's `identify` command to analyze the background image in our example, we can see the original shows no chroma subsampling: `1x1,1x1,1x1` (`4:4:4`), while the optimized image reports `2x2,1x1,1x1` (`4:2:0`) subsampling.
+Web Accelerator automatically peforms chroma subsampling on JPEG images to produce smaller image sizes. Using [ImageMagick](http://www.imagemagick.org/script/index.php)'s `identify` command to analyze the background image in our example, we can see the original shows no chroma subsampling: `1x1,1x1,1x1` (`4:4:4`), while the optimized image reports `2x2,1x1,1x1` (`4:2:0`) subsampling.
 
 ```
 $ identify -format "%[jpeg:sampling-factor]" bg.jpg
