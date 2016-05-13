@@ -62,7 +62,7 @@ We can push these savings further using a lower quality value. The image below s
 
 
 
-Notice too that the site will score better now in external tools such as Google's PageSpeed Insights which has noticed the optimized images. With this one configuration change, the score for our demo site goes from 77 to 83 (inset), and PageSpeed Insights can find little to complain about in our optimized images:
+Note too that the site will score better now in external tools such as Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) which has noticed the optimized images. With this one configuration change, the score for our demo site goes from 77 to 83 (inset), and PageSpeed Insights can find little to complain about in our optimized images:
 
 ![PageSpeed Insights before and after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/pagespeedinsights-before-after.jpg "PageSpeed Insights score goes from 77 to 83 with image compression")
 
