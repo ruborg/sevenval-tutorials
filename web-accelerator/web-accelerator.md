@@ -12,7 +12,7 @@ Images are genereally the largest contributor to page weight. Image optimization
 
 In FIT, there are two sides to image optimization: image scaling, and image compression. Since FIT version 14.3.1 it is possible to configure image scaling and compression separately.
 
-### Image scaling
+### Image Scaling
 
 The `image-scaling` option in your `conf/config.xml` enables scaling of images according to the client's display dimensions.
 
@@ -33,7 +33,7 @@ Using Chrome dev tools, we can immediately see the effect this has when we reloa
 
 A full list of image scaling parameters can be found [on the image scaling documentation page](https://developer.sevenval.com/docs/current/ress/Image_Scaling.html).
 
-### Image compression
+### Image Compression
 
 As well as scaling images, Web Accelerator also provides separate options for image compression. Global image compression can be enabled in your application using the `image-compression` element in your `config.xml` file:
 
@@ -68,7 +68,7 @@ Note too that the site will score better now in external tools such as Google's 
 
 
 
-#### Image formats
+#### Image Formats
 
 FIT Web Accelerator supports many different image formats, and it will convert your images to the best supported format for any device or browser. The formats supported by FIT include JPEG, PNG, WebP, GIF, SVG. Read more about supported formats in the [FIT image format documentation](https://developer.sevenval.com/docs/current/ress/Image_Scaling.html#image-formats).
 
