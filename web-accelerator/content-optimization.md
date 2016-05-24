@@ -275,10 +275,35 @@ After FIT has performed its SVG minification, if we check its source (path is `/
 
 #### Responsive Image Filtering
 
-FIT can improve responsive image markup by removing sources that don't apply.
+Responsive image markup using the `srcset` within `img` or `picture` and `source` elements can also be optimized to reduce markup payload. URLs within `srcset` are resolved so that any that don't apply to the current client are removed. 
 
-If x-descriptors and other descriptors are mixed, then FIT will not make any changes.
+Additionally, all `source` elements within a `picture` element that don't apply are also removed, further reducing markup size.
 
+Removal of `srcset` URLs and of `source` elements both follow some simple rules. Please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html) for precise details of how these rules are applied.
+
+To enable responsive image filtering, add the `responsive-image-filtering` element to your `config.xml`:
+
+```xml
+  <acceleration>
+    <responsive-image-filtering />
+  </acceleration>
+```
+
+We can see the result below. First, our original markup looked like this, with multiple image resources for the browser to resolve:
+
+```html
+```
+
+The optimized markup shows how the responsive image markup has been resolved by FIT,  leaving just a single image source that's appropriate for our client (Chrome for mobile?)
+
+```html
+```
+
+A quick comparison with Chrome dev tools also confirms the image sources have been resolved by FIT in the same way that our browser chooses one:
+
+IMAGES 
+
+For further examples, and more details on how the image URLs are resolved, please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html)
 
 
 #### Head Reordering
