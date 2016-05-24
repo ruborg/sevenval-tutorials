@@ -1,6 +1,6 @@
 ## Content Optimization
 
-FIT can automatically perform minification and other optimizations on your content, such as [resolving responsive images](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html), and [minification of HTML](https://developer.sevenval.com/docs/current/web-accelerator/HTMLMinifying.html), [SVG](https://developer.sevenval.com/docs/current/web-accelerator/SVGMinifying.html), and [JavaScript and CSS code](https://developer.sevenval.com/docs/current/web-accelerator/JsCssMinifying.html): This can reduce the number of transferred bytes significantly, even when gzip compression is used.
+FIT can automatically apply a whole range of optimizations on your content, including [resolving responsive images](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html), [minification of HTML](https://developer.sevenval.com/docs/current/web-accelerator/HTMLMinifying.html), [SVG](https://developer.sevenval.com/docs/current/web-accelerator/SVGMinifying.html), and [JavaScript and CSS code](https://developer.sevenval.com/docs/current/web-accelerator/JsCssMinifying.html): This can reduce the number of transferred bytes significantly, even when gzip compression is used.
 
 
 ### CSS Minification
@@ -23,7 +23,7 @@ With the `strip-prefixes` option set to `true`, FIT will remove all CSS properti
 
 FIT will remove unused prefixes from anywhere in the CSS, whether the prefix is part of a selector or an instruction. Additionally, if removal of a selector or instruction results in no remaining instructions or selectors for a block, then the whole CSS block is removed. 
 
-We can see the effect on our original prefixed CSS. The original looks like
+We can see the effect on our original prefixed CSS. The original looks like this:
 
 ```CSS
   body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -303,7 +303,7 @@ A quick comparison with Chrome dev tools also confirms the image sources have be
 
 IMAGES 
 
-For further examples, and more details on how the image URLs are resolved, please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html)
+For further examples, and more details on how the image URLs are resolved, please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html).
 
 
 #### Head Reordering
