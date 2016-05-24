@@ -8,7 +8,7 @@ If you haven't integrated your own website, you can follow through on our test w
 
 ## Image Optimization
 
-Images are genereally the largest contributor to page weight. Image optimization therefore can often yield significant payload savings which drastically improves performance: Fewer bytes have to be transferred and the rendering is faster. Moreover, sending large, unoptimized images to mobile devices can impact battery life too.
+Images are generally the largest contributor to page weight. Image optimization therefore can often yield significant payload savings which drastically improves performance: Fewer bytes have to be transferred and the rendering is faster. Moreover, sending large, unoptimized images to mobile devices can impact battery life too.
 
 In FIT, there are two sides to image optimization: image scaling, and image compression. Since FIT version 14.3.1 it is possible to configure image scaling and compression separately.
 
@@ -49,13 +49,13 @@ As well as scaling images, Web Accelerator also provides separate options for im
 
 The optional `quality` parameter allows you to set the global compression level. The default compression value is 70. A value of -1 indicates lossless compression for PNG images, and maximum quality for JPEGs.
 
-> Note that the `quality` value specifed here will override any value specified in the `image scaling` configuration.
+> Note that the `quality` value specified here will override any value specified in the `image scaling` configuration.
 
 If we reload our optimized site with the config above, we can see there is little *discernible* change to the images, but the file size difference is significant: the background image size has been reduced from 605KB to 123KB, and using `webpagetest.org` to analyze the page, we can see the total size for all images has been reduced from 892KB to 239KB.
 
 ![Chart of total images size before](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/images-size-before.png "Total size for all images before optimization") ![Chart of total images size after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/images-size-after.png "Total size for all images after optimization")
 
-We can push these savings further using a lower quality value. The image below shows the image with quality 10. The file size has been reduced to 34.8KB, but compression artifacts are now visible in image when displayed at full size. File size will obviously vary with quality: a lower quality value results in lower file size, so there is a tradeoff here. The default of 70 is often a good option!
+We can push these savings further using a lower quality value. The image below shows the image with quality 10. The file size has been reduced to 34.8KB, but compression artifacts are now visible in image when displayed at full size. File size will obviously vary with quality: a lower quality value results in lower file size, so there is a trade-off here. The default of 70 is often a good option!
 
 
 ![Highly compressed image](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/compressed-image.jpg "Compression quality of 10 results in visible artifacts in displayed at full resolution")
@@ -74,7 +74,7 @@ FIT Web Accelerator supports many different image formats, and it will convert y
 
 The WebP format is [on average between 25%-34% smaller for the same JPEG image](https://developers.google.com/speed/webp/docs/webp_study#experiment_2_ssim_vs_bpp_plots_for_webp_and_jpeg). Therefore it is preferred where it is supported.
 
-We can see this in action below, where a Chrome client receives WebP images, while Firefox receives JPEGs since WebP is not supported. Web Accelerator knows which image format is the best for which browser, and will make this decision automatically for you, so that your visitors will always recieve the optimal image format for their browser.
+We can see this in action below, where a Chrome client receives WebP images, while Firefox receives JPEGs since WebP is not supported. Web Accelerator knows which image format is the best for which browser, and will make this decision automatically for you, so that your visitors will always receive the optimal image format for their browser.
 
 Firefox developer tools network panel:
 
@@ -87,9 +87,9 @@ Chrome developer tools network panel:
 
 #### JPEG Chroma Subsampling
 
-Chroma subsampling is a feature of JPEG image compression based on the fact that humans are better at detecting variations in luminance (lighting) than in colour. Thus, colour information in images can be compressed without causing any detectable degradation in image quality.
+Chroma subsampling is a feature of JPEG image compression based on the fact that humans are better at detecting variations in luminance (lighting) than in color. Thus, color information in images can be compressed without causing any detectable degradation in image quality.
 
-Web Accelerator automatically peforms chroma subsampling on JPEG images to produce smaller image sizes. Using [ImageMagick](http://www.imagemagick.org/script/index.php)'s `identify` command to analyze the background image in our example, we can see the original shows no chroma subsampling: `1x1,1x1,1x1` (`4:4:4`), while the optimized image reports `2x2,1x1,1x1` (`4:2:0`) subsampling.
+Web Accelerator automatically performs chroma subsampling on JPEG images to produce smaller image sizes. Using [ImageMagick](http://www.imagemagick.org/script/index.php)'s `identify` command to analyze the background image in our example, we can see the original shows no chroma subsampling: `1x1,1x1,1x1` (`4:4:4`), while the optimized image reports `2x2,1x1,1x1` (`4:2:0`) subsampling.
 
 ```
 $ identify -format "%[jpeg:sampling-factor]" bg.jpg
