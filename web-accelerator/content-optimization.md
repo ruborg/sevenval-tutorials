@@ -55,7 +55,7 @@ CSS
 ```
 
 ### Filter Media Queries
-To filter unused media queries, include `<filter-media-queries />` in your `config.xml`:
+FIT can also remove unmatched media queries to help further reduce CSS size. To enabled this feature include `<filter-media-queries />` in your `config.xml`:
 
 ```xml
 <config>
@@ -133,10 +133,7 @@ In our original page, we have a number of JavaScript files. The following excerp
 After FIT optimization, we can see this excerpt has been minified. Note the lack of white space, and comments:
 
 ```JavaScript
-(function($){$.fn.navList=function(){var  $this=$(this);$a=$this.find('a'),b=[];$a.each(function(){var  $this=$(this),indent=Math.max(0,$this.parents('li').length-1),href=$this.attr('href'),target=$this.attr('target');b.push('<a '+'class="link depth-'+indent+'"'+
-((typeof target!=='undefined'&&target!='')?' target="'+target+'"':'')+
-((typeof href!=='undefined'&&href!='')?' href="'+href+'"':'')+'>'+'<span class="indent-'+indent+'"></span>'+
-$this.text()+'</a>');});return b.join('');};
+(function($){$.fn.navList=function(){var  $this=$(this);$a=$this.find('a'),b=[];$a.each(function(){var  $this=$(this),indent=Math.max(0,$this.parents('li').length-1),href=$this.attr('href'),target=$this.attr('target');b.push('<a '+'class="link depth-'+indent+'"'+((typeof target!=='undefined'&&target!='')?' target="'+target+'"':'')+((typeof href!=='undefined'&&href!='')?' href="'+href+'"':'')+'>'+'<span class="indent-'+indent+'"></span>'+$this.text()+'</a>');});return b.join('');};
 ```
 
 ### Markup Optimization
@@ -194,7 +191,7 @@ Some further configuration options are possible for HTML minification, such as r
 
 #### SVG Minification
 
-Likewise, since SVG images are markup based, they can also be minified. To enable SVG minification, `image-scaling` must also be enabled. So you must add the `<svg-minifying/>` element **as well as** the `<image-scaling />` element to your `config.xml`:
+Likewise, since SVG images are markup based, they can also be minified. Note that to enable SVG minification, `image-scaling` must also be enabled. So you must add the `<svg-minifying/>` element **as well as** the `<image-scaling />` element to your `config.xml` for this to work:
 
 ```xml
 <config>
