@@ -15,13 +15,13 @@ CSS minification is enabled in `config.xml` with the `style-minifying` element:
 </config>
 ```
 
-FIT has an advantage over simple static minification: it can remove CSS not applicable to the requesting client, such as vendor prefixes for other browsers, and unused media queries.
+FIT has an advantage over simple build- or deploy-time minification: since it is proxy based, it can remove CSS not applicable to the requesting client, such as vendor prefixes for other browsers, and unused media queries.
 
 #### Vendor Prefix Removal
 
 With the `strip-prefixes` option set to `true`, FIT will remove all CSS properties from the stylesheets that make use of vendor prefixes (e.g. `-webkit-` or `-ms-`) which do not match the `css/prefix` [property](https://developer.sevenval.com/docs/current/ress/DC_Props.html) of the requesting client.
 
-FIT will remove unused prefixes from anywhere in the CSS, whether the prefix is part of a selector or a instruction. Additionally, if removal of a seclector or instuction results in no remaining instructions or selectors for a block, then the whole CSS block is removed. 
+FIT will remove unused prefixes from anywhere in the CSS, whether the prefix is part of a selector or an instruction. Additionally, if removal of a selector or instruction results in no remaining instructions or selectors for a block, then the whole CSS block is removed. 
 
 We can see the effect on our original prefixed CSS. The original looks like
 
@@ -192,9 +192,9 @@ Quotes, comments and whitespace have all been removed where possible. This has r
 
 Some further configuration options are possible for HTML minification, such as retaining comments; see the [HTML minifying documentation](https://developer.sevenval.com/docs/current/web-accelerator/HTMLMinifying.html) for more information.
 
-#### SVG minification
+#### SVG Minification
 
-Likewise, since SVG images are markup based, they can also be minified. To enable SVG minification, `image-scaling` must also be enabled. So, you must add the `<svg-minifying/>` element **as well as** the `<image-scaling />` element to your `config.xml`:
+Likewise, since SVG images are markup based, they can also be minified. To enable SVG minification, `image-scaling` must also be enabled. So you must add the `<svg-minifying/>` element **as well as** the `<image-scaling />` element to your `config.xml`:
 
 ```xml
 <config>
@@ -329,7 +329,7 @@ For IE9 and non-IE browsers, the comment will be removed altogether.
 
 ### Content Optimization Total Savings
 
-So, now let's check how our page has emproved with all the described content optimization options enabled. Our `config.xml` would look like this:
+So, now let's check how our page has improved with all the described content optimization options enabled. Our `config.xml` would look like this:
 
 ```xml
 <config>
@@ -349,6 +349,6 @@ So, now let's check how our page has emproved with all the described content opt
 </config>
 ```
 
-After applying this configuation and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from XXX to YYY.
+After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from XXX to YYY.
 
 Our PageSpeed Insights score has also improved: it now shows a score of XX, up from YY.
