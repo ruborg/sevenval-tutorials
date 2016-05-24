@@ -80,7 +80,7 @@ Leaving only the following remaining:
 
 ### Script Minification
 
-Script Minification is enabled by including the `<script-minifying />` element in your `config.xml`:
+Script minification is enabled by including the `<script-minifying />` element in your `config.xml`:
 
 ```xml
 <config>
@@ -143,7 +143,7 @@ $this.text()+'</a>');});return b.join('');};
 
 FIT can also perform various markup-based optimizations, such as HTML minification, SVG minification, and responsive image filtering.
 
-#### HTML minification
+#### HTML Minification
 
 HTML minification is enabled by adding the `<html-minifying />` element to your `config.xml` file:
 
@@ -188,7 +188,7 @@ Compare this with the corresponding minified excerpt:
 <body id=top>  <header id=header><a href=# class="image avatar"><img src="/;pass/images/avatar.svg" alt=""></a> <h1><strong>Welcome to Cologne</strong><br> a beautiful 2,000-year-old city<br> in western Germany</h1> </header><div id=main>  <section id=one><header class=major><h2>Ipsum lorem dolor aliquam ante commodo<br> magna sed accumsan arcu neque.</h2> </header><p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p> <ul class=actions><li><a href=# class=button>Learn More</a></li> </ul></section>
 ```
 
-Quotes, comments and whitespace have all been removed where possible. This has resulted in a filesize reduction from 24KB to 7KB. This is just for HTML minification, without any of other optimizations!
+Quotes, comments and whitespace have all been removed where possible. This has resulted in a filesize reduction from 24KB to 7KB.
 
 Some further configuration options are possible for HTML minification, such as retaining comments; see the [HTML minifying documentation](https://developer.sevenval.com/docs/current/web-accelerator/HTMLMinifying.html) for more information.
 
