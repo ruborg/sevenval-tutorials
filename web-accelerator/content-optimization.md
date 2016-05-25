@@ -48,10 +48,12 @@ We can see the effect on our original prefixed CSS. The original looks like this
   }
 ```
 
-Below we can see all prefixes not applicable to our requesting browser (Chrome) have been removed:
+Below we can see all prefixes not applicable to our requesting browser (Chrome) have been removed, the styles have been minified:
 
 ```CSS
-CSS
+body.is-loading *,body.is-loading *:before,body.is-loading *:after{-webkit-animation:none !important;animation:none !important;-webkit-transition:none !important;transition:none !important}
+
+a{-webkit-transition:color 0.2s ease-in-out,border-color 0.2s ease-in-out;transition:color 0.2s ease-in-out,border-color 0.2s ease-in-out;border-bottom:dotted 1px;color:#49bf9d;text-decoration:none}
 ```
 
 See the [CSS minification documentation](https://developer.sevenval.com/docs/current/web-accelerator/JsCssMinifying.html#prefix-stripping) for further examples.
@@ -142,7 +144,7 @@ JavaScript minification has resulted in XXX KB savings in our example site.
 
 ### Markup Optimization
 
-FIT can also perform various optimizations directly on markup. The most obvious one is HTML minification, but less obvious optimizations that FIT performs are SVG minification, and responsive image filtering, and reordering of elements within the HTML `head`.
+FIT can also perform various optimizations directly on markup. As well as HTML minification, some  less obvious optimizations that FIT performs are SVG minification, and responsive image filtering, and reordering of elements within the HTML `head`.
 
 #### HTML Minification
 
@@ -189,7 +191,7 @@ Compare this with the corresponding minified excerpt:
 <body id=top>  <header id=header><a href=# class="image avatar"><img src="/;pass/images/avatar.svg" alt=""></a> <h1><strong>Welcome to Cologne</strong><br> a beautiful 2,000-year-old city<br> in western Germany</h1> </header><div id=main>  <section id=one><header class=major><h2>Ipsum lorem dolor aliquam ante commodo<br> magna sed accumsan arcu neque.</h2> </header><p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p> <ul class=actions><li><a href=# class=button>Learn More</a></li> </ul></section>
 ```
 
-Quotes, comments and whitespace have all been removed where possible. This has resulted in a filesize reduction from 24KB to 7KB.
+Quotes, comments and whitespace have all been removed where possible. This has resulted in a file size reduction from 24KB to 7KB.
 
 Some further configuration options are possible for HTML minification, such as retaining comments; see the [HTML minifying documentation](https://developer.sevenval.com/docs/current/web-accelerator/HTMLMinifying.html) for more information.
 
