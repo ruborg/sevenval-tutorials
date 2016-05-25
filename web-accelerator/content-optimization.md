@@ -71,13 +71,13 @@ FIT can also remove unmatched media queries to help further reduce CSS size. To 
 
 Note that media queries that *might* match will not be filtered. Width values are only filtered if the client does not support [viewport resizing](/docs/current/ress/DC_Props.html#viewport_resizeable) and the necessary viewport dimensions are available. Orientation values are only filtered if the client cannot [change the viewport orientation](/docs/current/ress/DC_Props.html#orientation_switchable) and does not support viewport resizing.
 
-In our example site, the media queries below have been removed:
+In our example site, there are quite a few media queries in CSS e.g.
 
 ```CSS
 
 ```
 
-Leaving only the following remaining:
+If you compare the original and final CSS files, you'll see that most have been removed. In this case, 
 
 ```CSS
 ```
@@ -140,7 +140,19 @@ After FIT optimization, we can see this excerpt has been minified. Note the lack
 (function($){$.fn.navList=function(){var  $this=$(this);$a=$this.find('a'),b=[];$a.each(function(){var  $this=$(this),indent=Math.max(0,$this.parents('li').length-1),href=$this.attr('href'),target=$this.attr('target');b.push('<a '+'class="link depth-'+indent+'"'+((typeof target!=='undefined'&&target!='')?' target="'+target+'"':'')+((typeof href!=='undefined'&&href!='')?' href="'+href+'"':'')+'>'+'<span class="indent-'+indent+'"></span>'+$this.text()+'</a>');});return b.join('');};
 ```
 
-JavaScript minification has resulted in XXX KB savings in our example site.
+> Note that if you include already minified source in your web page, then you can instruct FIT *not* to minify this resource again, as this can result in suboptimal minification. To disable minification on an individual resource, add the `ai-minify="false"` attribute to the include. 
+
+
+In our original HTML source, we could disable minification of the jQuery include with the following:
+
+```html
+      <script ai-minify="false" src="assets/js/jquery.min.js"></script>
+```
+
+The total bytesize of our JavaScript includes has dropped by 14%, from 51.6KB to 44.2KB!
+
+![JavaScript minification, before (top) and after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/js-minify-size.jpg "With script minification we have reduced JavaScript file size by 14%")
+
 
 ### Markup Optimization
 
