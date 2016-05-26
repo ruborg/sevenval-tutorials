@@ -326,7 +326,7 @@ When we look at the optimized markup we can see that FIT has resolved the image,
 <img class="fit" src="/;pass/images/kdom-2318px.jpg">
 ```
 
-If we use a device with a lower screen density, such as the Nokia Lumia 520, with device pixel ratio of 1.4, FIT chooses closest greater match, which is the 2x image:
+If we use a device with a lower screen density, such as the Nokia Lumia 520, with device pixel ratio of 1.4, FIT chooses the closest greater match, which is the 2x image, and so the optimized image markup becomes:
 
 ```html
 <img class="fit" src="/;pass/images/kdom-768px.jpg">
@@ -404,7 +404,9 @@ So now that we've seen some of the content optimizations that FIT can perform, l
 
 After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from 1.0MB (1024KB) to 399KB, a 61% page size reduction!
 
-Our PageSpeed Insights score has also improved: it now shows a healthy (and green) score of 86, up from a score of 77.
+![Overall FIT page improvement](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-page-improvement.jpg "Page improvement with FIT content optimization")
+
+Our PageSpeed Insights score has also improved: now showing a healthy (and green) score of 86, up from 77.
 
 ![PageSpeed insights improvement with FIT content optimization](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/pagespeed-insights-content.jpg "PageSpeed insights improvement with FIT content optimization")
 
