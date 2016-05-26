@@ -309,19 +309,29 @@ To enable responsive image filtering, add the `responsive-image-filtering` eleme
   </acceleration>
 ```
 
-We can see the result below. First, our original markup looked like this, with multiple image resources for the browser to resolve:
+We can see the result below. First, our original markup looks like this, with multiple image resources for the browser to resolve based on `x-descriptor` values:
 
 ```html
+  <img class="fit"
+        src="images/kdom-2318px.jpg" 
+        srcset="images/kdom-300px.jpg 1x,
+                images/kdom-768px.jpg 2x,
+                images/kdom-1024px.jpg 3x,
+                images/kdom-2318px.jpg 4x"
+        />
 ```
 
-The optimized markup shows how the responsive image markup has been resolved by FIT,  leaving just a single image source that's appropriate for our client (Chrome for mobile?)
+When we look at the optimized markup we can see that FIT has resolved the image, leaving just a single image source that's appropriate for our client. When requesting with a Nexus 6P device, with 3.5 device pixel ratio, FIT uses the closest matching image so that only a single image remains in the markup. 
 
 ```html
+<img class="fit" src="/;pass/images/kdom-2318px.jpg">
 ```
 
-A quick comparison with Chrome dev tools also confirms the image sources have been resolved by FIT in the same way that our browser chooses one:
+If we use a device with a lower screen density, such as the Nokia Lumia 520, with device pixel ratio of 1.4, FIT chooses closest greater match, which is the 2x image:
 
-IMAGES 
+```html
+<img class="fit" src="/;pass/images/kdom-768px.jpg">
+```
 
 For further examples, and more details on how the image URLs are resolved, please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html).
 
