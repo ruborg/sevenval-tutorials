@@ -372,7 +372,7 @@ Our markup contains the following IE comment:
 For IE8, or any older IE clients, FIT will resolve this to:
 
 ```html
-<link rel="stylesheet" href="assets/js/ie/legacy-ie.css">
+<script src="assets/js/ie/html5shiv.js"></script>
 ```
 
 For IE9 and non-IE browsers the comment will be removed altogether.
