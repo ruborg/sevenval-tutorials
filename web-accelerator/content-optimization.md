@@ -222,7 +222,7 @@ Likewise, since SVG images are markup based, they can also be minified. Note tha
 </config>
 ```
 
-In our example site, the Cologne coat of arms is an SVG image, and its markup looks like this:
+In our example site, the Cologne coat of arms is an SVG image; an excerpt is shown below:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -258,28 +258,8 @@ In our example site, the Cologne coat of arms is an SVG image, and its markup lo
     <rect y="141" width="93" x="194.5" height="6.6665"/>
     <rect y="156.17" width="91" x="195.5" height="6.8335"/>
   </g>
-  <use width="482" xlink:href="#crown" transform="translate(-142.4)" height="579.00635"/>
-  <use width="482" xlink:href="#crown" transform="translate(142.4)" height="579.00635"/>
-  <line stroke-width="6" y2="203.76" x2="5" stroke="#000" y1="203.76" x1="477" fill="none"/>
-  <path id="border" d="m477 0h-477v338.01c0 132.88 108.11 241 241 241s241-108.12 241-241v-338.01h-5zm-5 10v328.01c0 127.37-103.63 231-231 231s-231-103.63-231-231v-328.01h462z"/>
-  <path id="drip" d="m248.12 251.67s-5 7.75-5 13.25 3.76 11.5 7.26 16 9 12.75 9 22-4.76 22.25-18.5 22.25c-13.76 0-18.26-12.75-18.26-19.5 0-9 8.77-16.17 10.8-17.79 2.03-1.61-0.75-5.63-0.75-5.63s-1.96-3.54-1.96-7.04 1.91-15.29 17.41-23.54z"/>
-  <g id="upper_drip_row">
-    <use width="482" xlink:href="#drip" transform="translate(-168)" height="579.00635"/>
-    <use width="482" xlink:href="#drip" transform="translate(-84)" height="579.00635"/>
-    <use width="482" xlink:href="#drip" transform="translate(84)" height="579.00635"/>
-    <use width="482" xlink:href="#drip" transform="translate(168)" height="579.00635"/>
-  </g>
-  <g id="middle_drip_row">
-    <use width="482" xlink:href="#drip" transform="translate(-126,100)" height="579.00635"/>
-    <use width="482" xlink:href="#drip" transform="translate(-42,100)" height="579.00635"/>
-    <use id="use1416" xlink:href="#drip" width="482" height="579.00635" transform="translate(42,100)"/>
-    <use width="482" xlink:href="#drip" transform="translate(126,100)" height="579.00635"/>
-  </g>
-  <g id="lower_drip_row">
-    <use width="482" xlink:href="#drip" transform="translate(75,200)" height="579.00635"/>
-    <use width="482" xlink:href="#drip" transform="translate(-75,200)" height="579.00635"/>
-  </g>
-</svg>
+  ...
+  
 ```
 
 
