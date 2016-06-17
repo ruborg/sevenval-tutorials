@@ -58,22 +58,13 @@ As with image inlining, script and style inlining can be configured separately f
 To illustrate this, the HTML source of our example site has a small script referenced in the HTML head:
 
 ```html
-<html>
-<head>
-    <title>Welcome to Cologne</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css" />
     <script src="assets/js/dummy.js" type="text/javascript"></script>
 ```
 
-Now, with `<script-inlining />` added to your config, if you load the optimized site and view its source, you should see that this small script has been inlined in the HTML document:
+Now, with `<script-inlining />` added to your config, if you load the optimized site and view its source, you should see that this small script has now been inlined into the HTML document, saving a network request:
 
 ```html
-<html>
-<head>
-<title>Welcome to Cologne</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]--><link rel="stylesheet" href="/;m=css;nominify/demo-site/assets/css/main.css"><script type="text/javascript">/* I am a small dummy JS script. I don't do very much */
+<script type="text/javascript">/* I am a small dummy JS script. I don't do very much */
 var dummy = 'hello';
 console.log(dummy);
 </script>
