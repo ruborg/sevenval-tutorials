@@ -1,11 +1,11 @@
 # Request Reduction
 
-Now that the assets have been minified, let's take a look at how FIT can reduce the number of requests. Since there is a performance overhead for each HTTP request, having too many requests is bad for web performance. FIT can reduce the number of requests by inlining small external resources such as [images](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html), [scripts, and stylesheets](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html).
+Now that the assets have been minified, let's take a look at how FIT can reduce the number of requests. Since there is a performance overhead for each HTTP request, having too many requests is bad for performance. FIT can reduce the number of requests by inlining small external resources such as [images](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html), [scripts, and stylesheets](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html).
 
 > Note that these optimizations only really apply to HTTP/1.x. With HTTP/2, network connections are multiplexed and therefore request reduction does not apply. For HTTP/2, FIT will automatically disable request reduction, unless you explicitly override this. See below for more details.
 
 ## Image Inlining
-Image files can be automatically inlined into the main HTML document by FIT if they are smaller than a certain threshold KB size. FIT will automatically inline up to 50KB of images per page. However, inlining may be forced or prevented on a per element basis directly in your HTML documents.
+Image files can be automatically inlined into the main HTML document by FIT if they are smaller than a certain threshold KB size. FIT will automatically inline up to 50KB of images per page. However, inlining may also be forced or prevented on a per element basis directly in your HTML documents.
 
 Image inlining will only be applied to images in the FIT cache. Images are added to the FIT cache when image scaling or compression are applied, or when they have been explicitly cached. This means that you will need to enable `image scaling` or `image-compression` to see the effects of image inlining.
 
@@ -25,7 +25,9 @@ Image inlining is enabled by adding the `<image-inlining />` element to your `co
 
 If you open up your developer tools, and compare the original example site with the optimized version, you will see that the smaller images have been converted into data URIs and are now inlined. This has saved us five network requests!
 
-IMAGE - DEV TOOLS BEFORE /AFTER
+![FIT image inlining - before](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/image-inlining-before.png "FIT image inlining - before") ![FIT image inlining - after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/image-inlining-after.png "FIT image inlining - after")
+
+
 TODO: mention sizes that are processed 2KB, and  50KB total?
 
 To force or prevent inlining on a per image basis, use the `ai-inline` attribute on an individual `img` element:
@@ -76,9 +78,9 @@ In your HTML code you can force or prevent inlining of script or style files. Th
 
 * `true`: always force inlining
 * `false`: prevent inlining
-* `auto`: automatically decide inlining based on the file size. This is the default option
+* `auto`: automatically decide inlining based on the file size (this is the default option)
 
-> If the script or style content contains </, it is never going to be inlined, because it could lead to parsing problems in the client. 
+> If the script or style content contains `</`, it is never going to be inlined, because it could lead to parsing problems in the client. 
 
 See the [JavaScript and CSS Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html) for more details and examples.
 
