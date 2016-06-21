@@ -1,6 +1,6 @@
 # Request Reduction
 
-Now that the assets have been minified, let's take a look at how FIT can reduce the number of requests. Since there is a performance overhead for each HTTP request, having too many requests is bad for performance. FIT can reduce the number of requests by inlining small external resources such as [images](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html), [scripts, and stylesheets](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html).
+Now that the assets have been minified, let's take a look at how FIT can reduce the number of requests. Since there is an overhead for each HTTP request, having too many requests is bad for performance. FIT can reduce the number of requests by inlining small external resources such as [images](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html), [scripts, and stylesheets](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html).
 
 > The optimizations described here are, at this time, mostly HTTP 1.1 transport optimizations. Thus, image inlining, script and style inlining, and Script Manager optimizations will automatically be deactivated when the Delivery Context Property `request/http2` is set, because the measures taken can be counterproductive in HTTP 2. To force inlining of resources with `ai-inline="true"` set even if `request/http2` is true, use the `force-explicit="true"` attribute for the respective inlining option. Please note that this is not recommended!
 
@@ -81,9 +81,9 @@ In your HTML code you can force or prevent inlining of script or style files. Th
 See the [JavaScript and CSS Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html) for more details and examples.
 
 ## Script Manager
-The FIT script manager can dynamically aggregate and load JavaScript resources into a single bundled request, and store the scripts in the browser local storage (if available). On subsequent page requests the scripts are loaded from local storage so that no further requests are needed. 
+The FIT Script Manager can dynamically aggregate and load JavaScript resources into a single bundled request, and store the scripts in the browser local storage (if available). On subsequent page requests the scripts are loaded from local storage so that no further requests are needed. 
 
-The script manager is enabled in the `config.xml` file with the `<script-manager />` element:
+The Script Manager is enabled in the `config.xml` file with the `<script-manager />` element:
 
 ```xml
 <config>
@@ -93,33 +93,33 @@ The script manager is enabled in the `config.xml` file with the `<script-manager
 </config>
 ```
 
-If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request. Some things to note about the script manager behaviour are:
+If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request. Some things to note about the Script Manager behaviour are:
 
 * The execution order of scripts will be maintained.
 
-* Minification and text-filtering will be applied by the script manager, even if they are not explicitly activated in the config file.
+* Minification and text-filtering will be applied by the Script Manager, even if they are not explicitly activated in the config file.
 
 * A tag is generated for each script. The tag contains a hash of the script, and the client capabilities, so that a cached version will be updated when either the script or the client capabilties change.
 
-* Only scripts that are in the FIT cache will be loaded by the script manager.
+* Only scripts that are in the FIT cache will be loaded by the Script Manager.
 
-* Scripts with `async` or `defer` attribute won't be loaded by the script manager.
+* Scripts with `async` or `defer` attribute won't be loaded by the Script Manager.
 
-* Individual scripts can be excluded from the script manager in the HTML document using the `ai-use-script-manager="false"`
+* Individual scripts can be excluded from the Script Manager in the HTML document using the `ai-use-script-manager="false"`
 
-In our example site, we can see the script manager in action. After adding `<script-manager />` to the config file, you should see a new script tag inserted into the HTML document with id `AI_SCRIPT__loadJS_request`. It is the responsibility of *this* script to load any other scripts processed by the script manager.
+In our example site, we can see the Script Manager in action. After adding `<script-manager />` to the config file, you should see a new script tag inserted into the HTML document with id `AI_SCRIPT__loadJS_request`. It is the responsibility of *this* script to load any other scripts processed by the Script Manager.
 
-![Script manager](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-dev-tools.png "FIT script manager")
+![FIT Script Manager using local storage to load scripts](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-dev-tools.png "FIT Script Manager using local storage to load scripts")
 
 Note that in the image above, we can also see the following:
 
-* a `script` element with ID `AI_SCRIPT__loadJS_0`: this script, and scripts with similar IDs are added to insert loaded scripts at the correct place in the document
+* a `script` element with ID `AI_SCRIPT__loadJS_0`: this script, and scripts with similar IDs, are added to insert loaded scripts at the correct place in the document
 * generated `tag` attributes: as mentioned above
 * a `script` element with `data-src` attribute value of the URL of the loaded script: scripts like this are added when [debugging](https://developer.sevenval.com/docs/current/core/Debugging.html) is enabled
 
 If local storage is available, you can now also take a look at its contents in the developer tools:
 
-![Script manager local storage](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-localstorage.png "FIT script manager local storage")
+![Script Manager local storage data](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-localstorage.png "FIT Script Manager local storage data")
 
 And if you examine this data, you will see it contains the contents of our scripts!
 
@@ -127,5 +127,5 @@ And if you examine this data, you will see it contains the contents of our scrip
 {"version":"14.4.0","fit://filebroker/assets/js/ap/snippet":{"tag":"6b638cac","content":"window.ai=window.ai||{};ai.getViewportDim=function(){var e=window,t=document,n=-1,i=-1;if(\"BackCompat\"!==document.compatMode&&void 0!==t.documentElement&&void 0!==t.documentElement.clientWidth&&0!==t.documentElement.clientWidth){n=t.documentElement.clientWidth;i=t.documentElement.clientHeight}else if(void 0!==window.innerWidth){n=e.innerWidth;i=e.innerHeight}else{n=t.getElementsByTagName(\"body\")[0].clientWidth;i=t.getElementsByTagName(\"body\")[0].clientHeight}return{width:n,height:i}};function AI_ap_allowMirror(){return!1}\nfunction AI_ap_useValuesDetectedForLandscape(){return!0}"},"http://example.developer.sevenval.com/assets/js/dummy.js":{"content":"var dummy='hello';console.log(dummy);","expires":1466516751000,"tag":"e2971a19","oldTags":{}}}
 ```
 
-See the [Script Manager documentation](https://developer.sevenval.com/docs/current/web-accelerator/ScriptManager.html) for more details on how the script manager loads scripts.
+See the [Script Manager documentation](https://developer.sevenval.com/docs/current/web-accelerator/ScriptManager.html) for more details on how the Script Manager loads scripts.
 
