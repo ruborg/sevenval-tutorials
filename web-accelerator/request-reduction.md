@@ -9,8 +9,7 @@ Image files can be automatically inlined into the main HTML document by FIT if t
 
 Image inlining will only be applied to images in the FIT cache. Images are added to the FIT cache when image scaling or compression are applied, or when they have been explicitly cached. This means that you will need to enable `image scaling` or `image-compression` to see the effects of image inlining.
 
-ONLY IMAGES THAT AFTER GOING THROUGH THE FIT PIPELINE ARE LESS THAN 2KB WILL BE INLINED
-
+Only images that are less than 2KB in size (after FIT scaling and/or compression) will be inlined.
 
 Image inlining is enabled by adding the `<image-inlining />` element to your `config.xml`.
 
@@ -22,19 +21,16 @@ Image inlining is enabled by adding the `<image-inlining />` element to your `co
 </config>
 ```
 
-
 If you open up your developer tools, and compare the original example site with the optimized version, you will see that the smaller images have been converted into data URIs and are now inlined. This has saved us five network requests!
 
 ![FIT image inlining - before](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/image-inlining-before.png "FIT image inlining - before") ![FIT image inlining - after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/image-inlining-after.png "FIT image inlining - after")
 
 
-TODO: mention sizes that are processed 2KB, and  50KB total?
-
 To force or prevent inlining on a per image basis, use the `ai-inline` attribute on an individual `img` element:
 
 ```html
-    <img ai-inline="true" src="big-photo.jpg" width="2000" height="2000">
-    <img ai-inline="false" src="tiny-icon.png" width="10" height="10">
+<img ai-inline="true" src="big-photo.jpg" width="2000" height="2000">
+<img ai-inline="false" src="tiny-icon.png" width="10" height="10">
 ```
 
 `ai-inline="true"` will force inlining, and `ai-inline="false"` will disable inlining on an individual image, regardless of its size.
@@ -60,7 +56,7 @@ As with image inlining, script and style inlining can be configured separately f
 To illustrate this, the HTML source of our example site has a small script referenced in the HTML head:
 
 ```html
-    <script src="assets/js/dummy.js" type="text/javascript"></script>
+<script src="assets/js/dummy.js" type="text/javascript"></script>
 ```
 
 Now, with `<script-inlining />` added to your config, if you load the optimized site and view its source, you should see that this small script has now been inlined into the HTML document, saving a network request:
@@ -97,19 +93,39 @@ The script manager is enabled in the `config.xml` file with the `<script-manager
 </config>
 ```
 
-If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request.
+If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request. Some things to note about the script manager behaviour are:
 
-The execution order of scripts will be maintained.
+* The execution order of scripts will be maintained.
 
-Minification and text-filtering will be applied by the script manager, even if they are not explicitly activated in the config file.
+* Minification and text-filtering will be applied by the script manager, even if they are not explicitly activated in the config file.
 
-A tag is generated for each script. The tag contains a hash of the script, and the client capabilities, so that a cached version will be updated when either the script or the client capabilties change.
+* A tag is generated for each script. The tag contains a hash of the script, and the client capabilities, so that a cached version will be updated when either the script or the client capabilties change.
 
-Scripts with async or defer attribute won't be loaded by the script manager.
+* Only scripts that are in the FIT cache will be loaded by the script manager.
 
-Individual scripts can be excluded from the script manager in the HTML document using the `ai-use-script-manager="false"`
+* Scripts with `async` or `defer` attribute won't be loaded by the script manager.
 
-EXAMPLE
+* Individual scripts can be excluded from the script manager in the HTML document using the `ai-use-script-manager="false"`
+
+In our example site, we can see the script manager in action. After adding `<script-manager />` to the config file, you should see a new script tag inserted into the HTML document with id `AI_SCRIPT__loadJS_request`. It is the responsibility of *this* script to load any other scripts processed by the script manager.
+
+![Script manager](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-dev-tools.png "FIT script manager")
+
+Note that in the image above, we can also see the following:
+
+* a `script` element with ID `AI_SCRIPT__loadJS_0`: scripts like this are added to insert loaded scripts at the correct place in the document
+* generated `tag` attributes
+* another `script` element with `data-src` attribute value of the URL of the loaded script: scripts like this are added when [debugging](https://developer.sevenval.com/docs/current/core/Debugging.html) is enabled
+
+If local storage is available, you can now also take a look at its contents in the developer tools:
+
+![Script manager local storage](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-localstorage.png "FIT script manager local storage")
+
+And if you examine this data, you will see it contains the contents of our scripts!
+
+```javascript
+{"version":"14.4.0","fit://filebroker/assets/js/ap/snippet":{"tag":"6b638cac","content":"window.ai=window.ai||{};ai.getViewportDim=function(){var e=window,t=document,n=-1,i=-1;if(\"BackCompat\"!==document.compatMode&&void 0!==t.documentElement&&void 0!==t.documentElement.clientWidth&&0!==t.documentElement.clientWidth){n=t.documentElement.clientWidth;i=t.documentElement.clientHeight}else if(void 0!==window.innerWidth){n=e.innerWidth;i=e.innerHeight}else{n=t.getElementsByTagName(\"body\")[0].clientWidth;i=t.getElementsByTagName(\"body\")[0].clientHeight}return{width:n,height:i}};function AI_ap_allowMirror(){return!1}\nfunction AI_ap_useValuesDetectedForLandscape(){return!0}"},"http://example.developer.sevenval.com/assets/js/dummy.js":{"content":"var dummy='hello';console.log(dummy);","expires":1466516751000,"tag":"e2971a19","oldTags":{}}}
+```
 
 See the [Script Manager documentation](https://developer.sevenval.com/docs/current/web-accelerator/ScriptManager.html) for more details on how the script manager loads scripts.
 
