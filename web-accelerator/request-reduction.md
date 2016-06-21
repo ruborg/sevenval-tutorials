@@ -2,10 +2,10 @@
 
 Now that the assets have been minified, let's take a look at how FIT can reduce the number of requests. Since there is a performance overhead for each HTTP request, having too many requests is bad for performance. FIT can reduce the number of requests by inlining small external resources such as [images](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html), [scripts, and stylesheets](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html).
 
-> Note that these optimizations only really apply to HTTP/1.x. With HTTP/2, network connections are multiplexed and therefore request reduction does not apply. For HTTP/2, FIT will automatically disable request reduction, unless you explicitly override this. See below for more details.
+> The optimizations described here are, at this time, mostly HTTP 1.1 transport optimizations. Thus, image inlining, script and style inlining, and Script Manager optimizations will automatically be deactivated when the Delivery Context Property `request/http2` is set, because the measures taken can be counterproductive in HTTP 2. To force inlining of resources with `ai-inline="true"` set even if `request/http2` is true, use the `force-explicit="true"` attribute for the respective inlining option. Please note that this is not recommended!
 
 ## Image Inlining
-Image files can be automatically inlined into the main HTML document by FIT if they are smaller than a certain threshold KB size. FIT will automatically inline up to 50KB of images per page. However, inlining may also be forced or prevented on a per element basis directly in your HTML documents.
+Image files can be automatically inlined into the main HTML document by FIT if they are smaller than a certain threshold KB size. FIT can inline up to 50KB of images per page. However, inlining may also be forced or prevented on a per element basis directly in your HTML documents.
 
 Image inlining will only be applied to images in the FIT cache. Images are added to the FIT cache when image scaling or compression are applied, or when they have been explicitly cached. This means that you will need to enable `image scaling` or `image-compression` to see the effects of image inlining.
 
@@ -33,7 +33,7 @@ To force or prevent inlining on a per image basis, use the `ai-inline` attribute
 <img ai-inline="false" src="tiny-icon.png" width="10" height="10">
 ```
 
-`ai-inline="true"` will force inlining, and `ai-inline="false"` will disable inlining on an individual image, regardless of its size.
+Setting `ai-inline="true"` will force inlining, and `ai-inline="false"` will disable inlining on an individual image, regardless of its size.
 
 See the [Image Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html) for further details.
 
@@ -70,7 +70,7 @@ console.log(dummy);
 
 The default behaviour is to inline resources if they are smaller than 2KB. However, scripts with `defer` or `aysnc` attributes will not be inlined by default.
 
-In your HTML code you can force or prevent inlining of script or style files. This overrides the automatic inlining by size. To force or prevent inlining of specific files, use the `ai-inline` attribute. Possible values are 
+In your HTML code you can force or prevent inlining of script or style files. This overrides the automatic inlining by size. To force or prevent inlining of specific files, use the `ai-inline` attribute. Possible values are: 
 
 * `true`: always force inlining
 * `false`: prevent inlining
@@ -113,9 +113,9 @@ In our example site, we can see the script manager in action. After adding `<scr
 
 Note that in the image above, we can also see the following:
 
-* a `script` element with ID `AI_SCRIPT__loadJS_0`: scripts like this are added to insert loaded scripts at the correct place in the document
-* generated `tag` attributes
-* another `script` element with `data-src` attribute value of the URL of the loaded script: scripts like this are added when [debugging](https://developer.sevenval.com/docs/current/core/Debugging.html) is enabled
+* a `script` element with ID `AI_SCRIPT__loadJS_0`: this script, and scripts with similar IDs are added to insert loaded scripts at the correct place in the document
+* generated `tag` attributes: as mentioned above
+* a `script` element with `data-src` attribute value of the URL of the loaded script: scripts like this are added when [debugging](https://developer.sevenval.com/docs/current/core/Debugging.html) is enabled
 
 If local storage is available, you can now also take a look at its contents in the developer tools:
 
@@ -129,7 +129,3 @@ And if you examine this data, you will see it contains the contents of our scrip
 
 See the [Script Manager documentation](https://developer.sevenval.com/docs/current/web-accelerator/ScriptManager.html) for more details on how the script manager loads scripts.
 
-## Note on HTTP1 vs HTTP2 multiplexing
-The optimization by inlining of small resources is mostly beneficial only for HTTP/1.x connections. HTTP/2 introduces the concept of connection multiplexing, which means that the same connection can be used for mutiple resources. This obviates the need to implement the request reduction optimizations described here; in fact, these measures can be counter productive for HTTP2, so FIT will automatically deactivate Style and script inlining for the HTTP/2 protocol, that is, when the Delivery Context Property request/http2 is set.
-
-However, you can still force inlining of resources with `ai-inline="true"` even in an HTTP/2 context by adding the `force-explicit="true"` attribute to the respective element.
