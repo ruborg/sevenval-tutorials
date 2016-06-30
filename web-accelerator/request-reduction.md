@@ -93,29 +93,18 @@ The Script Manager is enabled in the `config.xml` file with the `<script-manager
 </config>
 ```
 
-If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request. Some things to note about the Script Manager behaviour are:
+If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request. 
 
-* The execution order of scripts will be maintained.
+As with Image Inlining, only scripts that are in the FIT cache will be loaded via the Script Manager.Scripts with `async` or `defer` attribute *won't* be loaded by the Script Manager. Individual scripts can be excluded from the Script Manager in the HTML document using the `ai-use-script-manager="false"`.
 
-* Minification and text-filtering will be applied by the Script Manager, even if they are not explicitly activated in the config file.
-
-* A tag is generated for each script. The tag contains a hash of the script, and the client capabilities, so that a cached version will be updated when either the script or the client capabilties change.
-
-* Only scripts that are in the FIT cache will be loaded by the Script Manager.
-
-* Scripts with `async` or `defer` attribute won't be loaded by the Script Manager.
-
-* Individual scripts can be excluded from the Script Manager in the HTML document using the `ai-use-script-manager="false"`
-
-In our example site, we can see the Script Manager in action. After adding `<script-manager />` to the config file, you should see a new script tag inserted into the HTML document with id `AI_SCRIPT__loadJS_request`. It is the responsibility of *this* script to load any other scripts processed by the Script Manager.
+In our example site, we can see the Script Manager in action. After adding `<script-manager />` to the config file, you should be able to see that some new scripts have been inserted into the HTML document, as shown in the dev tools inspector image below:
 
 ![FIT Script Manager using local storage to load scripts](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/script-manager-dev-tools.png "FIT Script Manager using local storage to load scripts")
 
-Note that in the image above, we can also see the following:
+In the image, we can see the following scripts:
 
-* a `script` element with ID `AI_SCRIPT__loadJS_0`: this script, and scripts with similar IDs, are added to insert loaded scripts at the correct place in the document
-* generated `tag` attributes: as mentioned above
-* a `script` element with `data-src` attribute value of the URL of the loaded script: scripts like this are added when [debugging](https://developer.sevenval.com/docs/current/core/Debugging.html) is enabled
+* A script with `id` `AI_SCRIPT__loadJS_request`: This script loads any other scripts processed by the Script Manager.
+* A script with `id` `AI_SCRIPT__loadJS_0`: This script, and scripts with similar `id`s, will insert loaded scripts at the correct place in the document.
 
 If local storage is available, you can now also take a look at its contents in the developer tools:
 
