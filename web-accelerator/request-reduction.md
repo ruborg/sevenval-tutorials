@@ -95,7 +95,7 @@ The Script Manager is enabled in the `config.xml` file with the `<script-manager
 
 If local storage is not supported, or if it is disabled, then FIT will still aggregate the scripts so that subsequent loads will require just a single request. 
 
-As with Image Inlining, only scripts that are in the FIT cache will be loaded via the Script Manager. Scripts with `async` or `defer` attributes *won't* be loaded by the Script Manager. Individual scripts can be excluded from the Script Manager in the HTML document using the `ai-use-script-manager="false"`.
+As with Image Inlining, only scripts that are in the FIT cache will be loaded via the Script Manager. Scripts with `async` or `defer` attributes *won't* be loaded by the Script Manager. Individual scripts can be excluded from the Script Manager in the HTML document by adding the `ai-use-script-manager="false"` attribute to the appropriate `script` element.
 
 In our example site, we can see the Script Manager in action. After adding `<script-manager />` to the config file, you should be able to see that some new scripts have been inserted into the HTML document, as shown in the dev tools inspector image below:
 
