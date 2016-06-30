@@ -75,9 +75,7 @@ In your HTML code you can force or prevent inlining of script or style files. Th
 * `false`: prevent inlining
 * `auto`: automatically decide inlining based on the file size (this is the default option)
 
-> If the script or style content contains `</`, it is never going to be inlined, because it could lead to parsing problems in the client. 
-
-See the [JavaScript and CSS Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html) for more details and examples.
+> Note that if a script or style content contains `</`, it will never be inlined, because it could lead to parsing problems in the client. 
 
 
 ## CSS Inlining
@@ -92,11 +90,27 @@ The approach is similar for CSS: to enable style inlining, add `<style-inlining 
 </config>
 ```
  
-In the example site, we can see a small CSS file has been inlined:
+In the example site, there is a small CSS file `small.css` linked in the `<head>`:
 
+```html
+<link rel="stylesheet" href="assets/css/small.css" />
+```
 
+If you view the source of the optimized site, you should see that this file has now been inlined:
+
+```html
+<style>/* small.css */
+
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, dl,
+dt, dd, blockquote, address{
+    margin: 0;
+    padding: 0;
+}</style>
+```
 
 As with JavaScript resources, inlining can be applied or disabled for individual CSS resources using the `ai-inline` attribute, with the same values as before.
+
+See the [JavaScript and CSS Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html) for more details and examples.
 
 ## Script Manager
 The FIT Script Manager can dynamically aggregate and load JavaScript resources into a single bundled request, and store the scripts in the browser local storage (if available). On subsequent page requests the scripts are loaded from local storage so that no further requests are needed. 
