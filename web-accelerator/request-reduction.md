@@ -38,22 +38,21 @@ Setting `ai-inline="true"` will force inlining, and `ai-inline="false"` will dis
 See the [Image Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Inlining.html) for further details.
 
 
-## JavaScript and CSS Inlining
+## JavaScript Inlining
 
-Small JavaScript and CSS resources can also be inlined by FIT. The approach is similar for both JavaScript and CSS, and each can be configured separately. For JavaScript add `<script-inlining />` to your `config.xml` file, and for CSS add `<style-inlining />`. So to enable inlining for both, your `config.xml` file would look like:
+Small JavaScript resources can be inlined by FIT by adding `<script-inlining />` to your `config.xml` file:
 
 ```xml
 <config>
   <acceleration>
     <script-inlining [ force-explicit="true" ] />
-    <style-inlining [ force-explicit="true" ] />
   </acceleration>
 </config>
 ```
 
-As with image inlining, script and style inlining can be configured separately for each included resource in the HTML document, using the `ai-inline="true"` attribute.
+As with image inlining, script inlining can be configured separately for each included resource in the HTML document, using the `ai-inline="true"` attribute.
 
-To illustrate this, the HTML source of our example site has a small script referenced in the HTML head:
+To illustrate JavaScript inlining, the HTML source of our example site has a small script referenced in the HTML head:
 
 ```html
 <script src="assets/js/dummy.js" type="text/javascript"></script>
@@ -79,6 +78,25 @@ In your HTML code you can force or prevent inlining of script or style files. Th
 > If the script or style content contains `</`, it is never going to be inlined, because it could lead to parsing problems in the client. 
 
 See the [JavaScript and CSS Inlining documentation](https://developer.sevenval.com/docs/current/web-accelerator/JsCssInlining.html) for more details and examples.
+
+
+## CSS Inlining
+
+The approach is similar for CSS: to enable style inlining, add `<style-inlining />` to your `config.xml`:  
+
+```xml
+<config>
+  <acceleration>
+    <style-inlining [ force-explicit="true" ] />
+  </acceleration>
+</config>
+```
+ 
+In the example site, we can see a small CSS file has been inlined:
+
+
+
+As with JavaScript resources, inlining can be applied or disabled for individual CSS resources using the `ai-inline` attribute, with the same values as before.
 
 ## Script Manager
 The FIT Script Manager can dynamically aggregate and load JavaScript resources into a single bundled request, and store the scripts in the browser local storage (if available). On subsequent page requests the scripts are loaded from local storage so that no further requests are needed. 
