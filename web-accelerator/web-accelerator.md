@@ -117,3 +117,30 @@ Image compression can also be controlled more precisely on a per-image basis usi
 <img alt="no-compress-me" ai-compress="false" src="image.png" />
 ```
 
+### Delayed Images
+
+One further optimization FIT can perform is *image delaying*. By removing image source URLs from image elements, the `load` event is triggered earlier, and the webpage becomes responsive more quickly.
+
+This feature is enabled by adding the `<image-delaying />` element to the `config.xml` file: 
+
+```xml
+<config>
+  <acceleration>
+    <image-delaying [ prioritization=" visibility | auto " ] [ visibility-offset-x="disabled" ] [ visibility-offset-y="150" ] />
+  </acceleration>
+</config>
+```
+
+Note the optional parameters which provide some `prioritization` options. Prioritization can be based on a simple ordering by providing an integer value for the `ai-priority` attribute of an image element in the HTML document e.g.
+
+```html
+  <img src="logo.png" ai-priority="1">
+  <img src="image.jpg" ai-priority="3">
+```
+
+The value must be in the range 0-3, where 3 is the highest priority. So in the example above, the second image, `image.jpg`, will be loaded before the first one.
+
+However, setting a `prioritization` value of `visibility` in the config file will override any numeric `ai-priority` value in the HTML document. In this case, all images will be loaded when they enter the viewport. You may also specify that images should be loaded when they are *within a certain pixel distance of the viewport*. This makes it more likely that an image will already be loaded by the time it actually enters the viewport. The `visibility-offset-x` and `visibility-offset-y` attributes can be used to specify the desired pixel distances. 
+
+See the [Delayed Images documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Delay.html) for more detail about priorities and how the original markup is manipulated to facilitate image delaying.
+
