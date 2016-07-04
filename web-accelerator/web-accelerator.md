@@ -2,7 +2,7 @@
 
 Here you'll learn how you can use FIT to increase both the real and the perceived performance of your website. At this point we assume that you already have [integrated your website, or our test site, with FIT as outlined before](https://developer.sevenval.com/start/tutorials/integration.html).
 
-If you haven't integrated your own website, you can follow through on our test website, which is shown below, on wide (desktop), and narrow (mobile) viewports:
+If you haven't integrated your own website, you can follow through on our test website, [http://example-backend.sevenval.com](http://example-backend.sevenval.com), which is shown below, on wide (desktop), and narrow (mobile) viewports:
 
 <img src="https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-demo-site.jpg" width="100%" style="max-width:1000px">
 
@@ -40,7 +40,7 @@ As well as scaling images, Web Accelerator also provides separate options for im
 ```xml
 <config>
   <acceleration>
-    <image-compression quality="70"/>
+    <image-compression [ quality="70" ] />
   </acceleration>
 </config>
 ```
@@ -66,7 +66,7 @@ Note too that the site will score better now in external tools such as Google's 
 
 ![PageSpeed Insights before and after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/pagespeedinsights-before-after.jpg "PageSpeed Insights score goes from 77 to 83 with image compression")
 
-
+More details are available on the [Image Compression documentation page](https://developer.sevenval.com/docs/current/web-accelerator/Image_Compression.html).
 
 #### Image Formats
 
@@ -87,9 +87,14 @@ Chrome developer tools network panel:
 
 #### JPEG Chroma Subsampling
 
+<!-- TODO: Too much detail here, just mention subsampling in passing -->
+
 Chroma subsampling is a feature of JPEG image compression based on the fact that humans are better at detecting variations in luminance (lighting) than in color. Thus, color information in images can be compressed without causing any detectable degradation in image quality.
 
-Web Accelerator automatically performs chroma subsampling on JPEG images to produce smaller image sizes. Using [ImageMagick](http://www.imagemagick.org/script/index.php)'s `identify` command to analyze the background image in our example, we can see the original shows no chroma subsampling: `1x1,1x1,1x1` (`4:4:4`), while the optimized image reports `2x2,1x1,1x1` (`4:2:0`) subsampling.
+Web Accelerator automatically performs chroma subsampling on JPEG images to produce smaller image files. 
+
+<!--
+Using [ImageMagick](http://www.imagemagick.org/script/index.php)'s `identify` command to analyze the background image in our example, we can see the original shows no chroma subsampling: `1x1,1x1,1x1` (`4:4:4`), while the optimized image reports `2x2,1x1,1x1` (`4:2:0`) subsampling.
 
 ```
 $ identify -format "%[jpeg:sampling-factor]" bg.jpg
@@ -102,10 +107,11 @@ Running the same command on the optimized version of the image (now at URL path:
 $ identify -format "%[jpeg:sampling-factor]" bg.jpg
 2x1,1x1,1x1
 ```
+-->
 
 #### PNG Quantization
 
-Web Accelerator also reduces 24-bit truecolor PNG images to 8-bit PNG images.
+Another optimization FIT performs is quantization of PNG images. FIT will automatically reduce 24-bit truecolor PNG images to 8-bit PNG images to reduce PNG image file size.
 
 
 #### Image Compression Parameters
@@ -119,19 +125,25 @@ Image compression can also be controlled more precisely on a per-image basis usi
 
 ### Delayed Images
 
-One further optimization FIT can perform is *image delaying*. By removing image source URLs from image elements, the `load` event is triggered earlier, and the webpage becomes responsive more quickly.
+One further optimization FIT can perform is *image delaying* (also known as *lazy loading*). By removing image source URLs from image elements, the `load` event is triggered earlier, and the webpage becomes responsive more quickly.
 
 This feature is enabled by adding the `<image-delaying />` element to the `config.xml` file: 
 
 ```xml
 <config>
   <acceleration>
-    <image-delaying [ prioritization=" visibility | auto " ] [ visibility-offset-x="disabled" ] [ visibility-offset-y="150" ] />
+    <image-delaying prioritization="visibility" />
   </acceleration>
 </config>
 ```
 
-Note the optional parameters which provide some `prioritization` options. Prioritization can be based on a simple ordering by providing an integer value for the `ai-priority` attribute of an image element in the HTML document e.g.
+Note the optional `prioritization="visibility"` parameter. With this option, all images will be loaded when they enter the viewport. You may also specify that images should be loaded when they are *within a certain pixel distance of the viewport*. This makes it more likely that an image will already be loaded by the time it actually enters the viewport. The `visibility-offset-x` and `visibility-offset-y` attributes can be used to specify the desired pixel distances.
+
+In the image below, we can see that only the two visible images from the *Cologne in pictures* section of the webpage have been loaded, and the ones that are not visible have not yet been loaded. If you scroll down the page, and keep an eye on the network requests, you should be able to see the images being fetched as the scroll into the viewport.
+
+IMAGE
+
+Prioritization can also be based on a simple ordering by providing an integer value for the `ai-priority` attribute of an image element in the HTML document e.g.
 
 ```html
   <img src="logo.png" ai-priority="1">
@@ -140,7 +152,26 @@ Note the optional parameters which provide some `prioritization` options. Priori
 
 The value must be in the range 0-3, where 3 is the highest priority. So in the example above, the second image, `image.jpg`, will be loaded before the first one.
 
-However, setting a `prioritization` value of `visibility` in the config file will override any numeric `ai-priority` value in the HTML document. In this case, all images will be loaded when they enter the viewport. You may also specify that images should be loaded when they are *within a certain pixel distance of the viewport*. This makes it more likely that an image will already be loaded by the time it actually enters the viewport. The `visibility-offset-x` and `visibility-offset-y` attributes can be used to specify the desired pixel distances. 
+> Note: setting a `prioritization` value of `visibility` in the config file will override any numeric `ai-priority` value in the HTML document.  
 
 See the [Delayed Images documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Delay.html) for more detail about priorities and how the original markup is manipulated to facilitate image delaying.
 
+## Summary
+Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved.
+
+TODO: requests, size, pagespeed insights scores, before and after
+
+The configuration file `config.xml` that was used to achieve this is listed below:
+
+```xml
+<config>
+  <ress>
+    <image-scaling viewport-fitting="current" />
+    <detection-page title="FIT14 Detection Page"/>
+  </ress>
+  <acceleration>
+    <image-compression />
+    <image-delaying prioritization="visibility" />
+  </acceleration>
+</config>
+```
