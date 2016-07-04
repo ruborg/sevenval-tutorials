@@ -141,7 +141,8 @@ Note the optional `prioritization="visibility"` parameter. With this option, all
 
 In the image below, we can see that only the two visible images from the *Cologne in pictures* section of the web page have been loaded (`01.jpg.webp` and `02.jpg.webp`), and the ones that are not visible have not yet been loaded (`03.jpg.webp` to `06.jpg.web`). If you scroll down the page, and keep an eye on the network requests, you should be able to see the images being fetched as they scroll into the viewport.
 
-IMAGE
+![Network panel of Chrome dev tools showing delayed image loading](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/image-delaying.jpg "Network panel of Chrome dev tools showing delayed image loading")
+
 
 Prioritization can also be based on a simple ordering by providing an integer value for the `ai-priority` attribute of an image element in the HTML document e.g.
 
