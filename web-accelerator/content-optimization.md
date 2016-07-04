@@ -140,7 +140,7 @@ After FIT optimization, we can see this excerpt has been minified. Note the lack
 (function($){$.fn.navList=function(){var  $this=$(this);$a=$this.find('a'),b=[];$a.each(function(){var  $this=$(this),indent=Math.max(0,$this.parents('li').length-1),href=$this.attr('href'),target=$this.attr('target');b.push('<a '+'class="link depth-'+indent+'"'+((typeof target!=='undefined'&&target!='')?' target="'+target+'"':'')+((typeof href!=='undefined'&&href!='')?' href="'+href+'"':'')+'>'+'<span class="indent-'+indent+'"></span>'+$this.text()+'</a>');});return b.join('');};
 ```
 
-> Note that if you include already minified source in your web page, then you can instruct FIT *not* to minify this resource again, as this can result in suboptimal minification. To disable minification on an individual resource, add the `ai-minify="false"` attribute to the include. 
+> To disable minification on an individual resource, add the `ai-minify="false"` attribute to the include. 
 
 
 In our original HTML source, we could disable minification of the jQuery include with the following:
@@ -357,16 +357,21 @@ For IE8, or any older IE clients, FIT will resolve this to:
 
 For IE9 and non-IE browsers the comment will be removed altogether.
 
-See the [IE Comment Resolving documenation](https://developer.sevenval.com/docs/current/web-accelerator/IE_Comment_Resolving.html) for more details and limitations of this feature.
+See the [IE Comment Resolving documentation](https://developer.sevenval.com/docs/current/web-accelerator/IE_Comment_Resolving.html) for more details and limitations of this feature.
 
 
-### Content Optimization Roundup
+### Content Optimization Summary
 
-So now that we've seen some of the content optimizations that FIT can perform, let's put them all together and check how the performance of our page has improved. To activate all of the described optimization options our `config.xml` will look like this:
+So now that we've seen some of the content optimizations that FIT can perform, let's put them all together and check how the performance of our page has improved. 
+
+Before we applied these optimizations, we started off with XXX requests and YYY KB. Our PageSpeed Insights score was 77.
+
+To activate all of the described optimization options our `config.xml` will look like this:
 
 ```xml
 <config>
   <acceleration>
+    ...
     <html-minifying />
     <script-minifying />
     <style-minifying strip-prefixes="true"/>
@@ -377,6 +382,7 @@ So now that we've seen some of the content optimizations that FIT can perform, l
     <ie-comment-resolving />
   </acceleration>
   <ress>
+    ...
     <image-scaling />
   </ress>
 </config>
