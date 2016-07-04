@@ -125,7 +125,7 @@ Image compression can also be controlled more precisely on a per-image basis usi
 
 ### Delayed Images
 
-One further optimization FIT can perform is *image delaying* (also known as *lazy loading*). By removing image source URLs from image elements, the `load` event is triggered earlier, and the webpage becomes responsive more quickly.
+One further optimization FIT can perform is *image delaying* (also known as *lazy loading*). By removing image source URLs from image elements, the `load` event is triggered earlier, and the web page becomes responsive more quickly.
 
 This feature is enabled by adding the `<image-delaying />` element to the `config.xml` file: 
 
@@ -139,7 +139,7 @@ This feature is enabled by adding the `<image-delaying />` element to the `confi
 
 Note the optional `prioritization="visibility"` parameter. With this option, all images will be loaded when they enter the viewport. You may also specify that images should be loaded when they are *within a certain pixel distance of the viewport*. This makes it more likely that an image will already be loaded by the time it actually enters the viewport. The `visibility-offset-x` and `visibility-offset-y` attributes can be used to specify the desired pixel distances.
 
-In the image below, we can see that only the two visible images from the *Cologne in pictures* section of the webpage have been loaded, and the ones that are not visible have not yet been loaded. If you scroll down the page, and keep an eye on the network requests, you should be able to see the images being fetched as the scroll into the viewport.
+In the image below, we can see that only the two visible images from the *Cologne in pictures* section of the web page have been loaded (`01.jpg.webp` and `02.jpg.webp`), and the ones that are not visible have not yet been loaded (`03.jpg.webp` to `06.jpg.web`). If you scroll down the page, and keep an eye on the network requests, you should be able to see the images being fetched as they scroll into the viewport.
 
 IMAGE
 
