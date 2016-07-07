@@ -67,7 +67,7 @@ console.log(dummy);
 </script>
 ```
 
-The default behaviour is to inline resources if they are smaller than 2KB. However, scripts with `defer` or `aysnc` attributes will not be inlined by default.
+The default behavior is to inline resources if they are smaller than 2KB. However, scripts with `defer` or `aysnc` attributes will not be inlined by default.
 
 In your HTML code you can force or prevent inlining of script or style files. This overrides the automatic inlining by size. To force or prevent inlining of specific files, use the `ai-inline` attribute. Possible values are: 
 
@@ -149,4 +149,28 @@ And if you examine this data, you will see it contains the contents of our scrip
 ```
 
 See the [Script Manager documentation](https://developer.sevenval.com/docs/current/web-accelerator/ScriptManager.html) for more details on how the Script Manager loads scripts.
+
+## Request reduction summary
+Now that we've seen how FIT can reduce the number of requests for a web page, let's measure how well it's done.
+
+At the beginning of this section, after applying image and content optimizations, our page started out with XX requests, and was YYY KB in size.
+
+|            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
+|     ---    | ---:      |     ---:| ---:                         | ---:
+|**Before**  |    26    |  242      | 61                         |  84 
+|**After**   |    26    |  242       | 61                          |  84  
+
+The new configuration parameters we used in our `config.xml` file are listed below:
+
+```xml
+<config>
+  <acceleration>
+    ...
+    <image-inlining />
+    <script-inlining />
+    <style-inlining />
+    <script-manager />
+  </acceleration>
+</config>
+```
 
