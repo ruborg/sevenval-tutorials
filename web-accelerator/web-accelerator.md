@@ -180,3 +180,5 @@ The configuration file `config.xml` that was used to achieve this is listed belo
   </acceleration>
 </config>
 ```
+
+In the next part of the tutorial we'll take a look at some of the ways that FIT can optimize content to further improve the performance of our web pages.
