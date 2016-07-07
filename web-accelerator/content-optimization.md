@@ -71,6 +71,7 @@ FIT can also remove unmatched media queries to help further reduce CSS size. To 
 
 Note that media queries that *might* match will not be filtered. Width values are only filtered if the client does not support [viewport resizing](/docs/current/ress/DC_Props.html#viewport_resizeable) and the necessary viewport dimensions are available. Orientation values are only filtered if the client cannot [change the viewport orientation](/docs/current/ress/DC_Props.html#orientation_switchable) and does not support viewport resizing.
 
+<!--
 In our example site, there are quite a few media queries in CSS e.g.
 
 ```CSS
@@ -81,6 +82,7 @@ If you compare the original and final CSS files, you'll see that most have been 
 
 ```CSS
 ```
+-->
 
 ### Script Minification
 
