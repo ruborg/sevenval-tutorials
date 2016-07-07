@@ -296,9 +296,8 @@ We can see the result below. First, our original markup looks like this, with mu
 ```html
   <img class="fit"
         src="images/kdom-2318px.jpg" 
-        srcset="images/kdom-300px.jpg 1x,
-                images/kdom-768px.jpg 2x,
-                images/kdom-1024px.jpg 3x,
+        srcset="images/kdom-768px.jpg 1x,
+                images/kdom-1024px.jpg 2x,
                 images/kdom-2318px.jpg 4x" />
 ```
 
