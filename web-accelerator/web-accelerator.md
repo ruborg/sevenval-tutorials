@@ -160,10 +160,10 @@ See the [Delayed Images documentation](https://developer.sevenval.com/docs/curre
 ## Image Optimization Summary
 Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved.
 
-|            | Requests | Page size KB | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
-|     ---    | ---      | ---          | ---                         | ---
-|**Before**  |    N     |  X           | nn                          |  mm  
-|**After**   |    N     |  X           | nn                          |  mm  
+|            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
+|     ---    | ---:      |     ---:| ---:                         | ---:
+|**Before**  |    25    |  1157      | 57                         |  69 
+|**After**   |    26    |  242       | 61                          |  84  
 
 
 The configuration file `config.xml` that was used to achieve this is listed below:
