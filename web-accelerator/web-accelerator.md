@@ -157,10 +157,14 @@ The value must be in the range 0-3, where 3 is the highest priority. So in the e
 
 See the [Delayed Images documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Delay.html) for more detail about priorities and how the original markup is manipulated to facilitate image delaying.
 
-## Summary
+## Image Optimization Summary
 Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved.
 
-TODO: requests, size, pagespeed insights scores, before and after
+|            | Requests | Page size KB | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
+|     ---    | ---      | ---          | ---                         | ---
+|**Before**  |    N     |  X           | nn                          |  mm  
+|**After**   |    N     |  X           | nn                          |  mm  
+
 
 The configuration file `config.xml` that was used to achieve this is listed below:
 
