@@ -310,7 +310,7 @@ When we look at the optimized markup we can see that FIT has resolved the image,
 If we use a device with a lower screen density, such as the Nokia Lumia 520, with device pixel ratio of 1.4, FIT chooses the closest greater match, which is the 2x image, and so the optimized image markup becomes:
 
 ```html
-<img class="fit" src="/;pass/images/kdom-768px.jpg">
+<img class="fit" src="/;pass/images/kdom-1024px.jpg">
 ```
 
 For further examples, and more details on how the image URLs are resolved, please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html).
