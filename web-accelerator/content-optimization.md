@@ -71,18 +71,37 @@ FIT can also remove unmatched media queries to help further reduce CSS size. To 
 
 Note that media queries that *might* match will not be filtered. Width values are only filtered if the client does not support [viewport resizing](/docs/current/ress/DC_Props.html#viewport_resizeable) and the necessary viewport dimensions are available. Orientation values are only filtered if the client cannot [change the viewport orientation](/docs/current/ress/DC_Props.html#orientation_switchable) and does not support viewport resizing.
 
-<!--
-In our example site, there are quite a few media queries in CSS e.g.
+
+In our example site, there are quite a few media queries in the `main.css` file; some are listed below:
 
 ```CSS
+  @media screen and (min-width: 981px) and (max-width: 1280px) {
+    ...
+  }
+
+  @media screen and (min-width: 737px) and (max-width: 980px) {
+    ...
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 736px) {
+    ...
+  }
+
+  @media screen and (max-width: 480px) {
+    ...
+  }  
 
 ```
 
-If you compare the original and final CSS files, you'll see that most have been removed. In this case, 
+If you compare the original and optimized CSS, you'll see that many of these rules have been removed. For example, on an iPhone 4 (screen width 320), of the above media queries, only the following remain: 
 
 ```CSS
+  @media screen and (max-width: 480px) {
+    ...
+  }
+
 ```
--->
+
 
 ### Script Minification
 
