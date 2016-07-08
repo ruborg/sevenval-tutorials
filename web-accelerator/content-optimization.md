@@ -71,6 +71,7 @@ FIT can also remove unmatched media queries to help further reduce CSS size. To 
 
 Note that media queries that *might* match will not be filtered. Width values are only filtered if the client does not support [viewport resizing](/docs/current/ress/DC_Props.html#viewport_resizeable) and the necessary viewport dimensions are available. Orientation values are only filtered if the client cannot [change the viewport orientation](/docs/current/ress/DC_Props.html#orientation_switchable) and does not support viewport resizing.
 
+<!--
 In our example site, there are quite a few media queries in CSS e.g.
 
 ```CSS
@@ -81,6 +82,7 @@ If you compare the original and final CSS files, you'll see that most have been 
 
 ```CSS
 ```
+-->
 
 ### Script Minification
 
@@ -294,9 +296,8 @@ We can see the result below. First, our original markup looks like this, with mu
 ```html
   <img class="fit"
         src="images/kdom-2318px.jpg" 
-        srcset="images/kdom-300px.jpg 1x,
-                images/kdom-768px.jpg 2x,
-                images/kdom-1024px.jpg 3x,
+        srcset="images/kdom-768px.jpg 1x,
+                images/kdom-1024px.jpg 2x,
                 images/kdom-2318px.jpg 4x" />
 ```
 
@@ -309,7 +310,7 @@ When we look at the optimized markup we can see that FIT has resolved the image,
 If we use a device with a lower screen density, such as the Nokia Lumia 520, with device pixel ratio of 1.4, FIT chooses the closest greater match, which is the 2x image, and so the optimized image markup becomes:
 
 ```html
-<img class="fit" src="/;pass/images/kdom-768px.jpg">
+<img class="fit" src="/;pass/images/kdom-1024px.jpg">
 ```
 
 For further examples, and more details on how the image URLs are resolved, please see the [Responsive Image Filtering documentation](https://developer.sevenval.com/docs/current/web-accelerator/Responsive_Image_Filtering.html).
