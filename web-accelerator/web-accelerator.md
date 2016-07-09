@@ -157,13 +157,19 @@ The value must be in the range 0-3, where 3 is the highest priority. So in the e
 See the [Delayed Images documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Delay.html) for more detail about priorities and how the original markup is manipulated to facilitate image delaying.
 
 ## Image Optimization Summary
-Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved. In the table below we can see that the page size has been reduced drastically, from 1157 KB to just 242 KB. Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 84, up from 61. The number of requests has *increased* by 1. But don't worry about this for now; later in the tutorial we'll show how FIT helps to reduce the number of page requests.
+Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved. In the table below we can see that the page size has been reduced drastically, from 1468 KB to just 281 KB. 
+
+The number of requests has *increased* by 1, but don't worry about this for now; later in the tutorial we'll show how FIT helps to reduce the number of page requests.
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
 |**Before**  |    28    |  1468      | 40                         |  47 
-|**After**   |    26    |  242       | 61                          |  84  
+|**After**   |    29    |  281       | 66                          |  83  
 
+
+Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 83, up from 47, and after all these optimizations, PageSpeed Insights cannot find anything to complain about with our images!
+
+IMAGE
 
 The configuration file `config.xml` that was used to achieve this is listed below:
 
