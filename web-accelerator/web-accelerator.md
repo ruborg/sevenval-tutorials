@@ -51,20 +51,19 @@ The optional `quality` parameter allows you to set the global compression level.
 
 > Note that the `quality` value specified here will override any value specified in the `image scaling` configuration.
 
-If we reload our optimized site with the config above, we can see there is little *discernible* change to the images, but the file size difference is significant: the background image size has been reduced from 605KB to 123KB, and using `webpagetest.org` to analyze the page, we can see the total size for all images has been reduced from 892KB to 239KB.
+If we reload our optimized site with the config above, we can see there is little *discernible* change to the images, but the file size difference is significant: the background image size has been reduced from 605KB to 123KB.
+
+<!--
+ and using `webpagetest.org` to analyze the page, we can see the total size for all images has been reduced from 892KB to 239KB.
 
 ![Chart of total images size before](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/images-size-before.png "Total size for all images before optimization") ![Chart of total images size after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/images-size-after.png "Total size for all images after optimization")
+-->
 
 We can push these savings further using a lower quality value. The image below shows the image with quality 10. The file size has been reduced to 34.8KB, but compression artifacts are now visible in image when displayed at full size. File size will obviously vary with quality: a lower quality value results in lower file size, so there is a trade-off here. The default of 70 is often a good option!
 
 
 ![Highly compressed image](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/compressed-image.jpg "Compression quality of 10 results in visible artifacts in displayed at full resolution")
 
-
-
-Note too that the site will score better now in external tools such as Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) which has noticed the optimized images. With this one configuration change, the score for our demo site goes from 77 to 83 (inset), and PageSpeed Insights can find little to complain about in our optimized images:
-
-![PageSpeed Insights before and after](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/pagespeedinsights-before-after.jpg "PageSpeed Insights score goes from 77 to 83 with image compression")
 
 More details are available on the [Image Compression documentation page](https://developer.sevenval.com/docs/current/web-accelerator/Image_Compression.html).
 
@@ -76,11 +75,11 @@ The WebP format is [on average between 25%-34% smaller for the same JPEG image](
 
 We can see this in action below, where a Chrome client receives WebP images, while Firefox receives JPEGs since WebP is not supported. Web Accelerator knows which image format is the best for which browser, and will make this decision automatically for you, so that your visitors will always receive the optimal image format for their browser.
 
-Firefox developer tools network panel:
+Firefox developer tools shows JPEGs,
 
 ![Firefox dev tools network panel](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/firefox-dev-tools-network.jpg "Network panel of Firefox dev tools showing JPEG images")
 
-Chrome developer tools network panel:
+While Chrome developer tools shows WebP
 
 ![Chrome dev tools network panel](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/chrome-dev-tools-network.jpg "Network panel of Chrome dev tools showing WebP images")
 
@@ -162,7 +161,7 @@ Now that we've seen some of the image optimizations that FIT can carry out, let'
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before**  |    25    |  1157      | 57                         |  69 
+|**Before**  |    28    |  1468      | 40                         |  47 
 |**After**   |    26    |  242       | 61                          |  84  
 
 
