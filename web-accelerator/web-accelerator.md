@@ -75,11 +75,11 @@ The WebP format is [on average between 25%-34% smaller for the same JPEG image](
 
 We can see this in action below, where a Chrome client receives WebP images, while Firefox receives JPEGs since WebP is not supported. Web Accelerator knows which image format is the best for which browser, and will make this decision automatically for you, so that your visitors will always receive the optimal image format for their browser.
 
-Firefox developer tools shows JPEGs,
+Firefox developer tools shows JPEGs:
 
 ![Firefox dev tools network panel](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/firefox-dev-tools-network.jpg "Network panel of Firefox dev tools showing JPEG images")
 
-While Chrome developer tools shows WebP
+While Chrome developer tools shows WebP images:
 
 ![Chrome dev tools network panel](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/chrome-dev-tools-network.jpg "Network panel of Chrome dev tools showing WebP images")
 
@@ -165,9 +165,11 @@ Now that we've seen some of the image optimizations that FIT can carry out, let'
 |**After**   |    22    |  211       | 66                          |  84  
 
 
-Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 83, up from 47, and after all these optimizations, PageSpeed Insights cannot find anything to complain about with our images!
+Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 84, up from 47, and after all these optimizations, PageSpeed Insights cannot find anything to complain about with our images!
 
-IMAGE
+![PageSpeed Insights improvements for FIT image optimization](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-image-optimization-results.jpg "PageSpeed Insights improvements for FIT image optimization")
+
+
 
 The configuration file `config.xml` that was used to achieve this is listed below:
 
