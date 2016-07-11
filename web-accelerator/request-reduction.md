@@ -180,3 +180,29 @@ The new configuration parameters we used in our `config.xml` file are listed bel
 </config>
 ```
 
+The full configuration file, with all the FIT optimizations that got us to this point, is given below:
+
+```xml
+<config>
+  <ress>
+    <image-scaling viewport-fitting="current" />
+    <detection-page title="FIT14 Detection Page"/>
+  </ress>
+  <acceleration>
+    <image-compression />
+    <image-delaying prioritization="visibility" />
+    <html-minifying />
+    <script-minifying />
+    <style-minifying strip-prefixes="true"/>
+    <filter-media-queries />
+    <svg-minifying />
+    <responsive-image-filtering />
+    <head-reordering />
+    <ie-comment-resolving />
+    <image-inlining />
+    <script-inlining />
+    <style-inlining />
+    <script-manager />
+  </acceleration>
+</config>
+```
