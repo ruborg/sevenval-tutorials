@@ -384,19 +384,19 @@ See the [IE Comment Resolving documentation](https://developer.sevenval.com/docs
 
 So now that we've seen some of the content optimizations that FIT can perform, let's put them all together and check how the performance of our page has improved. 
 
-Before we applied these optimizations, we started off with XXX requests and YYY KB. Our PageSpeed Insights score was 77.
+Before we applied these optimizations, we started off with 28 requests and 1468 KB. Our PageSpeed Insights score was 77.
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before**  |    26    |  242      | 61                         |  84 
-|**After**   |    26    |  242       | 61                          |  84  
+|**Before**  |    28    |  1468      | 40                         |  47 
+|**After**   |    21    |  185       | 66                          |  85  
 
 
 After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from 1.0MB (1024KB) to 399KB, a 61% page size reduction!
 
 ![Overall FIT page improvement](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-page-improvement.jpg "Page improvement with FIT content optimization")
 
-Our PageSpeed Insights score has also improved: now showing a healthy (and green) score of 86, up from 77.
+Our PageSpeed Insights score has also improved: now showing a healthy (and green) score of 85, up from 47.
 
 ![PageSpeed insights improvement with FIT content optimization](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/pagespeed-insights-content.jpg "PageSpeed insights improvement with FIT content optimization")
 

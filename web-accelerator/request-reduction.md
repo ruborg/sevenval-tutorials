@@ -157,8 +157,8 @@ At the beginning of this section, after applying image and content optimizations
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before**  |    26    |  242      | 61                         |  84 
-|**After**   |    26    |  242       | 61                          |  84  
+|**Before**  |    28    |  1468      | 40                         |  47 
+|**After**   |    15    |  188       | 61                          |  84  
 
 The new configuration parameters we used in our `config.xml` file are listed below:
 
