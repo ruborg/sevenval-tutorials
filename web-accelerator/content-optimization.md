@@ -394,7 +394,9 @@ Before we applied these optimizations, we started off with 28 requests and 1468 
 
 After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from 1468KB to 185KB, an 88% page size reduction!
 
+<!--
 ![Overall FIT page improvement](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-page-improvement.jpg "Page improvement with FIT content optimization")
+-->
 
 Our PageSpeed Insights score has also improved: now showing a healthy (and green) score of 85, up from 47.
 
