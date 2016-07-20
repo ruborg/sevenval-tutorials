@@ -186,4 +186,4 @@ The configuration file `config.xml` that was used to achieve this is listed belo
 </config>
 ```
 
-In the next part of the tutorial we'll take a look at some of the ways that FIT can optimize content to further improve the performance of our web pages.
+So that completes our quick tour of FIT's image optimization capabilities. In the [next part](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/content-optimization.md) of the tutorial we'll take a look at some of the ways that FIT can optimize content to further improve the performance of our web pages.
