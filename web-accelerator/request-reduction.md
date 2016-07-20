@@ -157,8 +157,10 @@ The table below summarizes the improvements. The original page started out with 
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before**  |    28    |  1468      | 40                         |  47 
-|**After**   |    15    |  188       | 70                          |  86  
+|**Original without FIT**  |    28    |  1468      | 40                         |  47 
+|**After Image Optimization**   |    22    |  211       | 66                          |  84  
+|**After Content Optimization**   |    21    |  185       | 66                          |  85 
+|**After Request Reduction**   |    15    |  188       | 70                          |  86  
 
 
 ![PageSpeed Insights improvements after FIT request reduction optimizations](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-request-reduction-results.jpg "PageSpeed Insights improvements after FIT request reduction optimizations")
