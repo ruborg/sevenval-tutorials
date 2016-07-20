@@ -161,8 +161,8 @@ Now that we've seen some of the image optimizations that FIT can carry out, let'
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before**  |    28    |  1468      | 40                         |  47 
-|**After**   |    22    |  211       | 66                          |  84  
+|**Before Image Optimization**  |    28    |  1468      | 40                         |  47 
+|**After Image Optimization**   |    22    |  211       | 66                          |  84  
 
 
 Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 84, up from 47, and after all these optimizations, PageSpeed Insights cannot find anything to complain about with our images!
