@@ -389,7 +389,7 @@ Before we applied these optimizations, we started off with 28 requests and 1468 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
 |**Original without FIT**  |    28    |  1468      | 40                         |  47 
-|**After Image Optimization**   |    22    |  211       | 66                          |  84  
+|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    22    |  211       | 66                          |  84  
 |**After Content Optimization**   |    21    |  185       | 66                          |  85  
 
 
