@@ -388,8 +388,9 @@ Before we applied these optimizations, we started off with 28 requests and 1468 
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before**  |    28    |  1468      | 40                         |  47 
-|**After**   |    21    |  185       | 66                          |  85  
+|**Original**  |    28    |  1468      | 40                         |  47 
+|**Before Content Optimization**   |    22    |  211       | 66                          |  84  
+|**After Content Optimization**   |    21    |  185       | 66                          |  85  
 
 
 After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from 1468KB to 185KB, an 88% page size reduction!
