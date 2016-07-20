@@ -153,7 +153,7 @@ See the [Script Manager documentation](https://developer.sevenval.com/docs/curre
 ## Request reduction summary
 Now that we've seen how FIT can reduce the number of requests for a web page, let's measure how well it's done.
 
-The table below summarizes the improvements. The original page started out with 28 requests, and was 1468KB in size. Now, with all the FIT optimizations applies, it makes only 15 requests, and is just 188KB in size, and the PageSpeed Insights scores have improved dramatically!
+The table below summarizes the improvements. The original page started out with 28 requests, and was 1468KB in size. Now, with all the FIT optimizations applied, it makes only 15 requests, and is just 188KB in size.
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
@@ -162,6 +162,7 @@ The table below summarizes the improvements. The original page started out with 
 |**After Content Optimization**   |    21    |  185       | 66                          |  85 
 |**After Request Reduction**   |    15    |  188       | 70                          |  86  
 
+Note how the PageSpeed Insights scores have improved overall too:
 
 ![PageSpeed Insights improvements after FIT request reduction optimizations](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-request-reduction-results.jpg "PageSpeed Insights improvements after FIT request reduction optimizations")
 
