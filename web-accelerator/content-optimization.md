@@ -425,4 +425,4 @@ To activate all of the described optimization options our `config.xml` will look
 ```
 
 
-
+In this part of the tutorial we saw some of the ways that FIT can optimize web content. In the [next part](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/request-reduction.md), we'll see how FIT can improve load times by reducing the number of HTTP requests a web page makes.
