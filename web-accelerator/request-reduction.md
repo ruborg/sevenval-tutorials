@@ -153,14 +153,14 @@ See the [Script Manager documentation](https://developer.sevenval.com/docs/curre
 ## Request reduction summary
 Now that we've seen how FIT can reduce the number of requests for a web page, let's measure how well it's done.
 
-The table below summarizes the improvements. The original page started out with 28 requests, and was 1468KB in size. Now, with all the FIT optimizations applied, it makes only 15 requests, and is just 188KB in size.
+The table below summarizes the improvements. The original page started out with 24 requests, and was 1319KB (1.3MB) in size. Now, with all the FIT optimizations applied, it makes only 12 requests, and is just 169KB in size.
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Original without FIT**  |    28    |  1468      | 40                         |  47 
-|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    22    |  211       | 66                          |  84  
-|**After [Content Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/content-optimization.md)**   |    21    |  185       | 66                          |  85 
-|**After Request Reduction**   |    15    |  188       | 70                          |  86  
+|**Original without FIT**  |    24    |  1319      | 40                         |  47 
+|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    20    |  211       | 66                          |  84  
+|**After [Content Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/content-optimization.md)**   |    18    |  183       | 81                         |  91 
+|**After Request Reduction**   |    12    |  169       | 87                          |  94  
 
 Note how the PageSpeed Insights scores have improved overall too:
 

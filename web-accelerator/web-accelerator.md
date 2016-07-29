@@ -157,15 +157,15 @@ The value must be in the range 0-3, where 3 is the highest priority. So in the e
 See the [Delayed Images documentation](https://developer.sevenval.com/docs/current/web-accelerator/Image_Delay.html) for more detail about priorities and how the original markup is manipulated to facilitate image delaying.
 
 ## Image Optimization Summary
-Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved. In the table below we can see that the page size has been reduced drastically, from 1468 KB to just 281 KB, and the number of requests has dropped to 22. Later in the tutorial we'll show how FIT can help to reduce the number of page requests even further.
+Now that we've seen some of the image optimizations that FIT can carry out, let's see how the performance of our web page has improved. In the table below we can see that the page size has been reduced drastically, from 1319KB to just 211KB, and the number of requests has dropped to 20. Later in the tutorial we'll show how FIT can help to reduce the number of page requests even further.
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Before Image Optimization**  |    28    |  1468      | 40                         |  47 
-|**After Image Optimization**   |    22    |  211       | 66                          |  84  
+|**Before Image Optimization**  |    24    |  1319      | 45                         |  49 
+|**After Image Optimization**   |    20    |  211       | 80                          |  83  
 
 
-Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 84, up from 47, and after all these optimizations, PageSpeed Insights cannot find anything to complain about with our images!
+Our PageSpeed Insights scores have improved for both mobile and desktop tests, with the desktop version now scoring 83, up from 49, and after all these optimizations, PageSpeed Insights cannot find anything to complain about with our images!
 
 ![PageSpeed Insights improvements for FIT image optimization](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-image-optimization-results.jpg "PageSpeed Insights improvements for FIT image optimization")
 

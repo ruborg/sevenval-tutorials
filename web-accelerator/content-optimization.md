@@ -388,12 +388,12 @@ Before we applied these optimizations, we started off with 28 requests and 1468 
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Original without FIT**  |    28    |  1468      | 40                         |  47 
-|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    22    |  211       | 66                          |  84  
-|**After Content Optimization**   |    21    |  185       | 66                          |  85  
+|**Original without FIT**  |    24    |  1319      | 45                         |  49 
+|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    20    |  211       | 80                          |  83  
+|**After Content Optimization**   |    18    |  183       | 81                          |  91  
 
 
-After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from 1468KB to 185KB, an 88% page size reduction!
+After applying this configuration and reloading our optimized page at `http://local14.sevenval-fit.com` we can see the page weight has dropped from 1319KB to 183KB, an 86% page size reduction!
 
 <!--
 ![Overall FIT page improvement](https://raw.githubusercontent.com/ruborg/sevenval-tutorials/master/web-accelerator/images/fit-page-improvement.jpg "Page improvement with FIT content optimization")
