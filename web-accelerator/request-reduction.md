@@ -157,9 +157,9 @@ The table below summarizes the improvements. The original page started out with 
 
 |            | Requests | Page size KB    | PageSpeed Insights (mobile) | PageSpeed Insights (desktop)
 |     ---    | ---:      |     ---:| ---:                         | ---:
-|**Original without FIT**  |    24    |  1319      | 40                         |  47 
-|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    20    |  211       | 66                          |  84  
-|**After [Content Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/content-optimization.md)**   |    18    |  183       | 81                         |  91 
+|**Original without FIT**  |    24    |  1319      | 45                         |  49
+|**After [Image Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/web-accelerator.md)**   |    20    |  211       | 80                          |  83  
+|**After [Content Optimization](https://github.com/ruborg/sevenval-tutorials/blob/master/web-accelerator/content-optimization.md)**   |    18    |  183       | 81                          |  91  
 |**After Request Reduction**   |    12    |  169       | 87                          |  94  
 
 Note how the PageSpeed Insights scores have improved overall too:
